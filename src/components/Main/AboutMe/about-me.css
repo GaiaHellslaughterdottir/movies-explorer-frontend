@@ -1,0 +1,73 @@
+.about-me {
+  min-width: 1280px;
+  padding: 110px 70px;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-me__title {
+  min-width: 1140px;
+  color: white;
+  font-family: Inter, serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  border-bottom: white solid 1px;
+  padding-bottom: 23px;
+}
+
+.about-me__wrapper {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: 1fr 270px;
+  gap: 0;
+}
+
+.about-me__name {
+  height: 20px;
+  color: white;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.about-me__dev {
+  color: white;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.about-me__text {
+  color: white;
+  grid-row-start: 3;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.about-me__link {
+  color: white;
+  grid-row-start: 4;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.about-me__photo {
+  width: 270px;
+  height: 327px;
+  border-radius: 10px;
+  background-image: url("../../../images/photo1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  grid-row-start: 1;
+  grid-row-end: 5;
+
+  grid-column-start: 2;
+  grid-column-end: 2;
+}

@@ -4,6 +4,14 @@
 
 @import "components/Header/header.css";
 
+@import "components/Main/Promo/Promo.css";
+
+@import "components/Main/AboutProject/about-project.css";
+
+@import "components/Main/Techs/techs.css";
+
+@import "components/Main/AboutMe/about-me.css";
+
 body {
-  background-color: bisque;
+  background-color: #202020;
 }
