@@ -2,16 +2,33 @@
 
 @import "vendor/fonts/Inter/fonts.css";
 
-@import "components/Header/header.css";
+@import "components/Main/main.css";
+
+@import "components/Header/Header.css";
 
 @import "components/Main/Promo/Promo.css";
 
-@import "components/Main/AboutProject/about-project.css";
+@import "components/Main/AboutProject/AboutProject.css";
 
-@import "components/Main/Techs/techs.css";
+@import "components/Main/Techs/Techs.css";
 
-@import "components/Main/AboutMe/about-me.css";
+@import "components/Main/AboutMe/AboutMe.css";
+
+@import "components/Main/Portfolio/Portfolio.css";
+
+@import "components/Footer/Footer.css";
+
+@import "components/Movies/movies.css";
+@import "components/Movies/MoviesCard/MoviesCard.css";
 
 body {
   background-color: #202020;
+  /*
+  background-color: bisque;
+  */
+
+}
+
+.page {
+
 }

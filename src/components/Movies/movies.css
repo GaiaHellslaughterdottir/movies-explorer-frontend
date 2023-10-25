@@ -1,0 +1,8 @@
+.movies {
+  min-width: 1280px;
+  padding: 70px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(360px, 319px));
+  row-gap: 28px;
+  column-gap: 32px;
+}
