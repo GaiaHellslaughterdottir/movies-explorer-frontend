@@ -1,0 +1,23 @@
+.submit-button {
+  width: 396px;
+  line-height: normal;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  height: 45px;
+  border-radius: 3px;
+  background-color: #4285F4;
+  border: 0;
+  color: #FFFFFF;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 134px;
+}
+
+.submit-button_green {
+  background-color: #3DDC84;
+}

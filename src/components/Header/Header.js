@@ -1,19 +1,31 @@
 import React from "react";
 
-export default function Header() {
+export default function Header(props) {
   return (
-    <header className="header">
+    <header className={ `header ${ !props.isMainPage ? "header_dark" : "" }` }>
       <div className="logo"/>
-      <div className="navigation">
+      { props.loggedIn && <div className="navigation">
         <a className="navigation__link">Фильмы</a>
         <a className="navigation__link">Сохранённые фильмы</a>
-      </div>
-      <div className="profile">
-        <a className="profile__link">Аккаунт</a>
-        <div className="profile__link-wrapper">
-          <div className="profile__icon"/>
+      </div> }
+
+      { !props.loggedIn && <div className="navigation">
+        <a className="navigation__link navigation__link_login">Регистрация</a>
+      </div> }
+
+      { props.loggedIn && <div className="header__profile">
+        <a className="header__profile-link">Аккаунт</a>
+        <div className="header__profile-link-wrapper">
+          <div className="header__profile-icon"/>
         </div>
-      </div>
+      </div> }
+
+      { !props.loggedIn && <div className="header__profile header__profile_login">
+        <button className="button">Войти
+
+        </button>
+      </div> }
+
     </header>
   );
 }

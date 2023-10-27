@@ -21,6 +21,18 @@
 @import "components/Movies/movies.css";
 @import "components/Movies/MoviesCard/MoviesCard.css";
 
+@import "components/Register/Register.css";
+
+@import "components/Form/Form.css";
+
+@import "components/Logo/Logo.css";
+
+@import "components/Form/FormField/FormField.css";
+@import "components/Login/Login.css";
+@import "components/Form/SubmitButton/SubmitButton.css";
+@import "components/Profile/Profile.css";
+@import "components/Button/Button.css";
+
 body {
   background-color: #202020;
   /*
@@ -30,5 +42,9 @@ body {
 }
 
 .page {
+  /*
+  max-width: 1280px;
+  */
+  font-family: Inter, serif;
 
 }

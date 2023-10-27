@@ -1,0 +1,18 @@
+.form {
+  width: 396px;
+  line-height: normal;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.form__title {
+  color: #FFF;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+
