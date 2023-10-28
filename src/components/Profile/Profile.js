@@ -9,26 +9,26 @@ export default function Profile(props) {
 
     <div className="profile">
 
-      <Form formTitle="Привет, Николай!" buttonTitle="Войти" name="login">
+      <Form className="form_edit-profile" formTitle="Bonjour Nicolas!" buttonTitle="Войти" name="login">
 
+        <FormField fieldTitle="Имя" errorTitle="Ошибка" disableErrors={true}>
+          <input value="Nicolas"
+                 minLength="2"
+                 maxLength="30"
+                 type="text"
+                 name="name"
+                 className="form__field"
+                 id="form__field-name"
+                 required/>
+        </FormField>
         <FormField fieldTitle="E-mail" errorTitle="Ошибка" disableErrors={true}>
-          <input value="Николай"
+          <input value="E-mail"
                  minLength="2"
                  maxLength="30"
                  type="text"
                  name="email"
-                 className="form__field form__field_right"
-                 id="form__field-email"
-                 required/>
-        </FormField>
-        <FormField fieldTitle="Пароль" errorTitle="Ошибка" disableErrors={true}>
-          <input value="Николай"
-                 minLength="2"
-                 maxLength="30"
-                 type="password"
-                 name="password"
                  className="form__field"
-                 id="form__field-password"
+                 id="form__field-email"
                  required/>
         </FormField>
       </Form>

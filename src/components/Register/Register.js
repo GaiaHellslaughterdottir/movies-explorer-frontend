@@ -2,12 +2,14 @@ import React from "react";
 import Logo from "../Logo/Logo";
 import Form from "../Form/Form";
 import FormField from "../Form/FormField/FormField";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   return (
     <div className="register">
       <Logo/>
-      <Form formTitle="Добро пожаловать!" buttonTitle="Зарегистрироваться" name="register" classNameModifier="submit-button_green">
+      <Form formTitle="Добро пожаловать!" buttonTitle="Зарегистрироваться"
+            name="register" submitButtonClassNameModifier="submit-button_green">
 
         <FormField fieldTitle="Имя" errorTitle="Ошибка">
           <input value="Виталий"
@@ -40,6 +42,8 @@ export default function Register() {
                  required/>
         </FormField>
       </Form>
+      <p className="login__footer">
+        Уже зарегистрированы? {<Link to="/signin" className="login__footer-link">Войти</Link>}</p>
     </div>
   );
 }

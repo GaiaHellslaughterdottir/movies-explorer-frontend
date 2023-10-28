@@ -21,3 +21,12 @@
 .submit-button_green {
   background-color: #3DDC84;
 }
+
+.form_edit-profile .submit-button {
+  width: 410px;
+  margin-top: 220px;
+}
+
+.form_login .submit-button {
+  margin-top: 221px;
+}

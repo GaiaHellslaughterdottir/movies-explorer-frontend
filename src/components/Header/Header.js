@@ -1,8 +1,11 @@
 import React from "react";
 
 export default function Header(props) {
+  const currentPath = window.location.pathname;
+
+  console.log(currentPath);
   return (
-    <header className={ `header ${ !props.isMainPage ? "header_dark" : "" }` }>
+    <header className={ `header ${ currentPath === "/" ? "header_blue" : "" }` }>
       <div className="logo"/>
       { props.loggedIn && <div className="navigation">
         <a className="navigation__link">Фильмы</a>
