@@ -1,32 +1,31 @@
 import React from "react";
+import { Link, useLocation, Route, NavLink } from "react-router-dom";
 
 export default function Header(props) {
-  const currentPath = window.location.pathname;
-
-  console.log(currentPath);
+  console.log(props);
   return (
-    <header className={ `header ${ currentPath === "/" ? "header_blue" : "" }` }>
-      <div className="logo"/>
+    <header className={ `header ${ window.location.pathname === "/" ? "header_blue" : "" }` }>
+      <NavLink to="/" ><div className="logo"/></NavLink>
+
       { props.loggedIn && <div className="navigation">
-        <a className="navigation__link">Фильмы</a>
-        <a className="navigation__link">Сохранённые фильмы</a>
-      </div> }
 
+        <NavLink to="/movies" className="navigation__link">Фильмы</NavLink>
+        <NavLink to="/saved-movies" className="navigation__link">Сохранённые фильмы</NavLink>
+
+      </div> }
       { !props.loggedIn && <div className="navigation">
-        <a className="navigation__link navigation__link_login">Регистрация</a>
+        <NavLink to="/signup" className="navigation__link navigation__link_login">Регистрация</NavLink>
       </div> }
 
-      { props.loggedIn && <div className="header__profile">
-        <a className="header__profile-link">Аккаунт</a>
-        <div className="header__profile-link-wrapper">
+      { props.loggedIn && <NavLink to="/profile" className="header__profile">
+        Аккаунт
+        <div className={`header__profile-link-wrapper ${ window.location.pathname !== "/" ? "header__profile-link-wrapper_grey" : "" }`}>
           <div className="header__profile-icon"/>
         </div>
-      </div> }
+      </NavLink> }
 
       { !props.loggedIn && <div className="header__profile header__profile_login">
-        <button className="button">Войти
-
-        </button>
+        <NavLink to="/signin"><button className="button">Войти</button></NavLink>
       </div> }
 
     </header>

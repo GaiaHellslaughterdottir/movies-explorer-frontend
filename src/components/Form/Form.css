@@ -27,3 +27,15 @@
 .form_login {
   width: 396px;
 }
+
+.form__movies-search {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 1140px;
+  height: 72px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(170, 170, 170, 0.2);
+}

@@ -11,7 +11,7 @@ export default function Profile(props) {
 
       <Form className="form_edit-profile" formTitle="Bonjour Nicolas!" buttonTitle="Войти" name="login">
 
-        <FormField fieldTitle="Имя" errorTitle="Ошибка" disableErrors={true}>
+        <FormField fieldTitle="Имя">
           <input value="Nicolas"
                  minLength="2"
                  maxLength="30"
@@ -21,7 +21,7 @@ export default function Profile(props) {
                  id="form__field-name"
                  required/>
         </FormField>
-        <FormField fieldTitle="E-mail" errorTitle="Ошибка" disableErrors={true}>
+        <FormField fieldTitle="E-mail">
           <input value="E-mail"
                  minLength="2"
                  maxLength="30"

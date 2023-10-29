@@ -6,7 +6,7 @@
 }
 
 .about-me__title {
-  min-width: 1280px;
+  max-width: 100%;
   color: white;
   font-family: Inter, serif;
   font-size: 22px;

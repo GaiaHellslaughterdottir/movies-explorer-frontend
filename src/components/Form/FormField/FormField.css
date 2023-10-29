@@ -23,6 +23,11 @@
   margin-bottom: 17px;
 }
 
+.form__movies-search .form__field-wrapper {
+  border-bottom: none;
+  padding: 0;
+}
+
 .form_edit-profile .form__field-wrapper:last-of-type {
   border-bottom: none;
 }
@@ -39,6 +44,23 @@
   margin: 0;
   border-bottom: none;
   padding: 0;
+}
+
+.form__movies-search .form__field {
+  border-bottom: none;
+  width: 900px;
+  margin: 0;
+  padding: 0 0 0 25px;
+  color: #8B8B8B;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  background-color: #202020;
+}
+
+.form__movies-search .form__field:focus {
+  border: none;
 }
 
 .form__field {
@@ -70,4 +92,14 @@
   box-sizing: border-box;
   height: 25px;
   margin-top: 6px;
+}
+
+.form__field-short-checkbox {
+  position: absolute;
+  top: 168px;
+}
+
+.form__field-wrapper_filter-checkbox {
+  position: absolute;
+  top: 168px;
 }

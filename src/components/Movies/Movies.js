@@ -3,16 +3,15 @@ import MoviesCard from "../Movies/MoviesCard/MoviesCard";
 
 export default function Movies() {
   return (
-    <section className="movies">
-      <MoviesCard/>
-      <MoviesCard/>
-      <MoviesCard/>
-      <MoviesCard/>
-      <MoviesCard/>
-      <MoviesCard/>
-      <MoviesCard/>
-      <MoviesCard/>
-
-    </section>
+      <section className="movies">
+        <MoviesCard/>
+        <MoviesCard/>
+        <MoviesCard/>
+        <MoviesCard/>
+        <MoviesCard/>
+        <MoviesCard/>
+        <MoviesCard/>
+        <MoviesCard/>
+      </section>
   );
 }

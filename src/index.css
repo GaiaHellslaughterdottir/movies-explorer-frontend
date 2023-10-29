@@ -1,37 +1,26 @@
 @import "vendor/normalize.css";
-
 @import "vendor/fonts/Inter/fonts.css";
-
 @import "components/Main/main.css";
-
 @import "components/Header/Header.css";
-
 @import "components/Main/Promo/Promo.css";
-
 @import "components/Main/AboutProject/AboutProject.css";
-
 @import "components/Main/Techs/Techs.css";
-
 @import "components/Main/AboutMe/AboutMe.css";
-
 @import "components/Main/Portfolio/Portfolio.css";
-
 @import "components/Footer/Footer.css";
-
 @import "components/Movies/movies.css";
 @import "components/Movies/MoviesCard/MoviesCard.css";
-
 @import "components/Register/Register.css";
-
 @import "components/Form/Form.css";
-
 @import "components/Logo/Logo.css";
-
 @import "components/Form/FormField/FormField.css";
 @import "components/Login/Login.css";
 @import "components/Form/SubmitButton/SubmitButton.css";
 @import "components/Profile/Profile.css";
 @import "components/Button/Button.css";
+@import "components/SavedMovies/SavedMovies.css";
+@import "components/Movies/SearchForm/SearchForm.css";
+@import "components/Movies/FilterCheckbox/FilterCheckbox.css";
 
 body {
   background-color: #202020;
@@ -46,5 +35,11 @@ body {
   max-width: 1280px;
   */
   font-family: Inter, serif;
+}
 
+.page__line {
+  margin: 0 70px 0 70px;
+  border-top: 1px solid #AAAAAA;
+  border-bottom: none;
+  max-width: 100%;
 }

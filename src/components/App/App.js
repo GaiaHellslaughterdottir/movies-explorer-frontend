@@ -2,37 +2,42 @@ import React from "react";
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 
 import ProtectedRouteElement from "../ProtectedRoute";
-import Header from "../Header/Header";
-import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import Movies from "../Movies/Movies";
-import Logo from "../Logo/Logo";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
-import Profile from "../Profile/Profile";
+import MainPage from "../../pages/MainPage";
+import MoviesPage from "../../pages/MoviesPage";
+import SavedMoviesPage from "../../pages/SavedMoviesPage";
+import ProfilePage from "../../pages/ProfilePage";
+import SignInPage from "../../pages/SignInPage";
+import SignUpPage from "../../pages/SignUpPage";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = React.useState(false);
-
+  const [loggedIn, setLoggedIn] = React.useState(true);
 
   return (
-    <div className="page">
 
       <Routes>
-        <Route path="/" element={<Main loggedIn={loggedIn}/>}/>
+        <Route path="/" element={ <MainPage loggedIn={ loggedIn }/> }/>
         <Route path="/movies"
-               element={loggedIn ?
-                 <ProtectedRouteElement element={Movies}
-                                        loggedIn={loggedIn}/> : <Navigate to="/signin" replace/>}/>
-        <Route path="signin" element={<Login/>}/>
+               element={ loggedIn ?
+                 <ProtectedRouteElement element={ MoviesPage }
+                                        loggedIn={ loggedIn }/> : <Navigate to="/movies" replace/> }/>
+        <Route path="/saved-movies"
+               element={ loggedIn ?
+                 <ProtectedRouteElement element={ SavedMoviesPage }
+                                        loggedIn={ loggedIn }/> : <Navigate to="/saved-movies" replace/> }/>
+        <Route path="/profile"
+               element={ loggedIn ?
+                 <ProtectedRouteElement element={ ProfilePage }
+                                        loggedIn={ loggedIn }/> : <Navigate to="/profile" replace/> }/>
+        <Route path="signin" element={ <SignInPage/> }/>
 
-        <Route path="signup" element={<Register/>}/>
+        <Route path="signup" element={ <SignUpPage/> }/>
 
       </Routes>
-
-    </div>
-
   );
 }
 

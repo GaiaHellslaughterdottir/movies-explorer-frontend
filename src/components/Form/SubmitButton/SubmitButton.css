@@ -30,3 +30,9 @@
 .form_login .submit-button {
   margin-top: 221px;
 }
+
+.search-form .submit-button {
+  width: 100px;
+  height: 52px;
+  margin: 0 10px 0 0;
+}
