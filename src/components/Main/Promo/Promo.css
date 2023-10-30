@@ -50,5 +50,13 @@
   line-height: 16px;
   margin-top: 146px;
   margin-bottom: 75px;
+  -webkit-transition: background-color .5s ease-out;
+  -moz-transition: background-color .5s ease-out;
+  -o-transition: background-color .5s ease-out;
+  transition: background-color .5s ease-out;
+}
+
+.promo__button-show-more:hover {
+  background-color: #0F4157;
 }
 

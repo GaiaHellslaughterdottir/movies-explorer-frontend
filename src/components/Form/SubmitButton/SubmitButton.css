@@ -15,7 +15,11 @@
   text-align: center;
   font-size: 14px;
   font-weight: 500;
-  margin-top: 134px;
+  margin-top: 20px;
+  -webkit-transition: background-color .5s ease-out;
+  -moz-transition: background-color .5s ease-out;
+  -o-transition: background-color .5s ease-out;
+  transition: background-color .5s ease-out;
 }
 
 .submit-button_green {
@@ -24,15 +28,19 @@
 
 .form_edit-profile .submit-button {
   width: 410px;
-  margin-top: 220px;
+  margin-top: 20px;
 }
 
 .form_login .submit-button {
-  margin-top: 221px;
+  margin-top: 20px;
 }
 
 .search-form .submit-button {
   width: 100px;
   height: 52px;
   margin: 0 10px 0 0;
+}
+
+.submit-button:hover {
+  background-color: #2D6EDB;
 }

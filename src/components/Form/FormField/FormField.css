@@ -1,5 +1,5 @@
 .form__field-wrapper {
-  width: 396px;
+
   padding: 0 0 10px 0;
 }
 
@@ -35,6 +35,9 @@
 .form_edit-profile .form__field-title {
   height: 14px;
   width: 100px;
+  color: white;
+  font-size: 11px;
+  font-weight: 500;
 }
 
 .form_edit-profile .form__field {
@@ -44,6 +47,8 @@
   margin: 0;
   border-bottom: none;
   padding: 0;
+  font-size: 11px;
+  font-weight: 400;
 }
 
 .form__movies-search .form__field {

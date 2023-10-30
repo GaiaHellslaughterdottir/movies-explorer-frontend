@@ -21,6 +21,8 @@
 @import "components/SavedMovies/SavedMovies.css";
 @import "components/Movies/SearchForm/SearchForm.css";
 @import "components/Movies/FilterCheckbox/FilterCheckbox.css";
+@import "components/Movies/MoviesCardList/MoviesCardList.css";
+@import "components/Movies/Preloader/Preloader.css";
 
 body {
   background-color: #202020;
@@ -42,4 +44,35 @@ body {
   border-top: 1px solid #AAAAAA;
   border-bottom: none;
   max-width: 100%;
+}
+
+.page-not-found {
+  font-family: Inter, serif;
+  color: #FFF;
+  text-align: center;
+  width: 396px;
+  margin: auto;
+  padding-top: 70px;
+  font-style: normal;
+  line-height: normal;
+}
+
+.page-not-found__title {
+  font-size: 140px;
+  font-weight: 400;
+  margin-top: 246px;
+}
+
+.page-not-found__subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 5px;
+}
+
+.page-not-found__link-wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: 60px;
 }

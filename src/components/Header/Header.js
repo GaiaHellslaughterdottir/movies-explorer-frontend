@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useLocation, Route, NavLink } from "react-router-dom";
 
 export default function Header(props) {
-  console.log(props);
   return (
     <header className={ `header ${ window.location.pathname === "/" ? "header_blue" : "" }` }>
       <NavLink to="/" ><div className="logo"/></NavLink>

@@ -1,17 +1,16 @@
 import React from "react";
 import MoviesCard from "../Movies/MoviesCard/MoviesCard";
+import SearchForm from "./SearchForm/SearchForm";
+import MoviesCardList from "./MoviesCardList/MoviesCardList";
+import Preloader from "./Preloader/Preloader";
 
 export default function Movies() {
   return (
       <section className="movies">
-        <MoviesCard/>
-        <MoviesCard/>
-        <MoviesCard/>
-        <MoviesCard/>
-        <MoviesCard/>
-        <MoviesCard/>
-        <MoviesCard/>
-        <MoviesCard/>
+        <SearchForm/>
+        <hr className="page__line"/>
+        <MoviesCardList/>
+        <Preloader/>
       </section>
   );
 }

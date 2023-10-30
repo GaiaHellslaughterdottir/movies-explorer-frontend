@@ -3,13 +3,13 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import Header from "../components/Header/Header";
 import Profile from "../components/Profile/Profile";
 
-export default function ProfilePage() {
+export default function ProfilePage(props) {
   const currentUser = React.useContext(CurrentUserContext);
 
   return (
     <div className="page">
       <Header loggedIn={true}/>
-      <Profile/>
+      <Profile onSignOut={props.onSignOut}/>
     </div>
   );
 }

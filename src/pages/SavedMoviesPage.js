@@ -11,7 +11,6 @@ export default function SavedMoviesPage() {
   return (
     <div className="page">
       <Header loggedIn={true}/>
-      <SearchForm/>
       <SavedMovies/>
       <Footer/>
     </div>

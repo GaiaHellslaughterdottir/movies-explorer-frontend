@@ -11,8 +11,6 @@ export default function MoviesPage() {
   return (
     <div className="page">
       <Header loggedIn={true}/>
-      <SearchForm/>
-      <hr className="page__line"/>
       <Movies/>
       <Footer/>
     </div>

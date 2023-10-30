@@ -4,11 +4,16 @@ import SubmitButton from "./SubmitButton/SubmitButton";
 
 export default function Form(props) {
   return (
-    <form className={`form ${props.className}`}
-          name={`${props.name}-form`}>
-      {props.formTitle && <h1 className="form__title">{ props.formTitle }</h1>}
+    <form className={ `form ${ props.className }` }
+          name={ `${ props.name }-form` }>
+      { props.formTitle && <h1 className="form__title">{ props.formTitle }</h1> }
+      <div className="form__fields-wrapper">
       { props.children }
-      <SubmitButton buttonTitle={props.buttonTitle}/>
+      </div>
+      <div class="form__footer-wrapper">
+        { props.errorText && <span className="form__error">{ props.errorText }</span> }
+        <SubmitButton buttonTitle={ props.buttonTitle }/>
+      </div>
     </form>
   );
 }

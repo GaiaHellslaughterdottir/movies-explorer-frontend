@@ -17,4 +17,13 @@
 .login__footer-link {
   color: #4285F4;
   text-decoration: none;
+  cursor: pointer;
+  -webkit-transition: color .5s ease-out;
+  -moz-transition: color .5s ease-out;
+  -o-transition: color .5s ease-out;
+  transition: color .5s ease-out;
+}
+
+.login__footer-link:hover {
+  color: #2D6EDB;
 }
