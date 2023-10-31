@@ -33,17 +33,18 @@ body {
 }
 
 .page {
-  /*
   max-width: 1280px;
-  */
+  margin: auto;
   font-family: Inter, serif;
 }
 
 .page__line {
-  margin: 0 70px 0 70px;
-  border-top: 1px solid #AAAAAA;
+  margin: auto;
+  border-top: 1px solid rgba(170, 170, 170, 0.2);
   border-bottom: none;
-  max-width: 100%;
+  max-width: 1140px;
+  border-left: none;
+  border-right: none;
 }
 
 .page-not-found {
@@ -75,4 +76,14 @@ body {
   right: 0;
   margin: 0 auto;
   bottom: 60px;
+}
+
+@media screen and (max-width: 1279px) {
+  .page {
+    max-width: 768px;
+  }
+
+  .page__line {
+    max-width: 708px;
+  }
 }

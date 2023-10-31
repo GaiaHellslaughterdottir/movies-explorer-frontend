@@ -60,3 +60,33 @@
   background-color: #0F4157;
 }
 
+@media screen and (max-width: 1279px) {
+  .promo {
+    margin: auto;
+    max-width: 768px;
+    display: block;
+    background-position-x: center;
+    background-position-y: 140px;
+    padding: 492px 44px 76px 44px;
+  }
+
+  .promo__title {
+    margin: auto;
+    text-align: center;
+    font-size: 40px;
+    line-height: 50px;
+  }
+
+  .promo__subtitle {
+    margin: 22px auto 0 auto;
+    text-align: center;
+    font-weight: 400;
+    width: 260px;
+  }
+
+  .promo__button-show-more {
+    margin: 92px auto 0 auto;
+    display: block;
+  }
+}
+

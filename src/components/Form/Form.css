@@ -34,7 +34,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  width: 1140px;
+  max-width: 100%;
   height: 72px;
   border-radius: 8px;
   border: 1.5px solid rgba(170, 170, 170, 0.2);
@@ -45,10 +45,14 @@
 }
 
 .form__footer-wrapper {
-  margin-top: 189px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+}
+
+.form_edit-profile .form__footer-wrapper {
+  margin-top: 189px;
+
 }
 
 .form__error {

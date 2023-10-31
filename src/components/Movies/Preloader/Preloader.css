@@ -1,15 +1,13 @@
 .preloader {
   max-width: 100%;
-  display: flex;
-  justify-content: center;
 }
 
 .preloader__container {
-  align-items: center;
-  justify-content: center;
+  display: block;
+  margin: auto;
   cursor: pointer;
   border: 0;
-  width: 1140px;
+  width: calc(100% - 140px);
   height: 36px;
   border-radius: 6px;
   background-color: #2F2F2F;
@@ -27,4 +25,10 @@
 
 .preloader__container:hover {
   background-color: #4285F4;
+}
+
+@media screen and (max-width: 1279px) {
+  .preloader__container {
+    width: calc(100% - 60px);
+  }
 }

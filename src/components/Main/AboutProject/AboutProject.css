@@ -3,11 +3,10 @@
   padding: 110px 70px;
   display: flex;
   flex-direction: column;
-
 }
 
 .about-project__title {
-  min-width: 1140px;
+  max-width: 100%;
   color: white;
   font-family: Inter, serif;
   font-size: 22px;
@@ -21,7 +20,7 @@
 
 .about-project__table-wrapper {
   margin-top: 70px;
-  min-width: 1140px;
+  max-width: 100%;
   display: inline-grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 40px;
@@ -90,4 +89,15 @@
   font-size: 14px;
   font-weight: 400;
   line-height: normal;
+}
+
+@media screen and (max-width: 1279px) {
+  .about-project {
+    max-width: 768px;
+    padding: 90px 50px;
+  }
+
+  .about-project__time-bar-cell {
+   font-weight: 400;
+  }
 }

@@ -1,9 +1,12 @@
 .search-form {
+  max-width: 1140px;
+  margin: auto;
   position: relative;
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 70px;
-  padding-bottom: 89px;
+  padding: 70px 70px 89px 70px;
+}
+
+@media screen and (max-width: 1279px) {
+  .search-form {
+    padding: 70px 30px 89px 30px;
+  }
 }

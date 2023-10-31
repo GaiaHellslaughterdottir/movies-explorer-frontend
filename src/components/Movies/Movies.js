@@ -1,5 +1,4 @@
 import React from "react";
-import MoviesCard from "../Movies/MoviesCard/MoviesCard";
 import SearchForm from "./SearchForm/SearchForm";
 import MoviesCardList from "./MoviesCardList/MoviesCardList";
 import Preloader from "./Preloader/Preloader";
