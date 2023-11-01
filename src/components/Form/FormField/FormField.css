@@ -107,3 +107,14 @@
   position: absolute;
   top: 168px;
 }
+
+@media screen and (max-width: 767px) {
+  .form__movies-search .form__field {
+    width: 160px;
+    font-size: 16px;
+  }
+
+  .form__field-wrapper_filter-checkbox {
+    top: 156px;
+  }
+}

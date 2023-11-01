@@ -9,7 +9,9 @@ export default function Register() {
     <div className="register">
       <Logo/>
       <Form formTitle="Добро пожаловать!" buttonTitle="Зарегистрироваться"
-            name="register" submitButtonClassNameModifier="submit-button_green">
+            name="register" submitButtonClassNameModifier="submit-button_green"
+            footerElement={ <p className="login__footer">
+              Уже зарегистрированы? { <Link to="/signin" className="login__footer-link">Войти</Link> }</p> }>
 
         <FormField fieldTitle="Имя" errorTitle="Ошибка">
           <input value="Виталий"
@@ -42,8 +44,7 @@ export default function Register() {
                  required/>
         </FormField>
       </Form>
-      <p className="login__footer">
-        Уже зарегистрированы? {<Link to="/signin" className="login__footer-link">Войти</Link>}</p>
+
     </div>
   );
 }

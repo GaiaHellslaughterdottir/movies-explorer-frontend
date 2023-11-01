@@ -16,3 +16,13 @@
     column-gap: 24px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .movies-card-list {
+    width: 300px;
+    padding: 40px 10px 30px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}

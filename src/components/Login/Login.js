@@ -9,7 +9,8 @@ export default function Login(props) {
   return (
     <div className="login">
       <Logo/>
-      <Form className="form_login" formTitle="Рады видеть!" buttonTitle="Войти" name="login">
+      <Form className="form_login" formTitle="Рады видеть!" buttonTitle="Войти" name="login" footerElement={<p className="login__footer">
+        Ещё не зарегистрированы? {<Link to="/signup" className="login__footer-link">Регистрация</Link>}</p>}>
 
         <FormField fieldTitle="E-mail" errorTitle="Ошибка">
           <input value="Виталий"
@@ -32,8 +33,6 @@ export default function Login(props) {
                  required/>
         </FormField>
       </Form>
-        <p className="login__footer">
-          Ещё не зарегистрированы? {<Link to="/signup" className="login__footer-link">Регистрация</Link>}</p>
     </div>
   );
 }

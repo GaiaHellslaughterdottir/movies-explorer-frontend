@@ -51,11 +51,15 @@
 
 .profile__button-wrapper {
   width: fit-content;
-  margin: 220px auto 0 auto;
+  margin: 0 auto 0 auto;
   text-align: center;
   font-size: 13px;
   font-style: normal;
   line-height: normal;
+  position: fixed;
+  bottom: 40px;
+  left: 0;
+  right: 0;
 }
 
 .profile__link-register {
@@ -83,4 +87,28 @@
   -moz-transition: color .5s ease-out;
   -o-transition: color .5s ease-out;
   transition: color .5s ease-out;
+}
+
+@media screen and (max-width: 767px) {
+  .profile {
+    max-width: 320px;
+  }
+
+  .profile__wrapper {
+    margin-top: 70px;
+    position: relative;
+  }
+
+  .profile__field-wrapper:first-of-type {
+    margin-top: 80px;
+  }
+
+  .profile__field-wrapper {
+    width: 260px;
+    margin-top: 17px;
+  }
+
+  .profile__button-wrapper {
+    font-size: 12px;
+  }
 }

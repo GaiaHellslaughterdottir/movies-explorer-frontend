@@ -16,7 +16,6 @@
   color: white;
   font-family: Inter, serif;
   font-size: 50px;
-  font-style: normal;
   font-weight: 400;
   line-height: 58px;
 }
@@ -26,7 +25,6 @@
   color: white;
   font-family: Inter, serif;
   font-size: 13px;
-  font-style: normal;
   font-weight: 400;
   line-height: normal;
   opacity: 0.5;
@@ -45,7 +43,6 @@
   color: rgba(255, 255, 255, 1);;
   font-family: Inter, serif;
   font-size: 12px;
-  font-style: normal;
   font-weight: 500;
   line-height: 16px;
   margin-top: 146px;
@@ -90,3 +87,31 @@
   }
 }
 
+@media screen and (max-width: 767px) {
+  .promo {
+    margin: auto;
+    max-width: 320px;
+    display: block;
+    background-size: 210px 206px;
+    background-position-x: center;
+    background-position-y: 70px;
+    padding: 320px 0 30px 0;
+  }
+
+  .promo__title {
+    width: 300px;
+    margin: auto;
+    text-align: center;
+    font-size: 30px;
+    line-height: 38px;
+    letter-spacing: -1.2px;
+  }
+
+  .promo__subtitle {
+    margin: 24px auto 0 auto;
+  }
+
+  .promo__button-show-more {
+    margin: 80px auto 0 auto;
+  }
+}

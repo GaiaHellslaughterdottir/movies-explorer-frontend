@@ -96,3 +96,53 @@
     letter-spacing: -0.48px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .techs {
+    margin: auto;
+    max-width: 284px;
+    padding: 70px 18px;
+  }
+
+  .techs__title {
+    max-width: 100%;
+    color: white;
+    font-size: 18px;
+    letter-spacing: -0.72px;
+    border-bottom: rgba(0, 0, 0, 1) solid 1px;
+    padding-bottom: 28px;
+  }
+
+  .techs__subtitle {
+    margin-top: 60px;
+    font-size: 30px;
+    line-height: normal;
+    letter-spacing: -1.2px;
+  }
+
+  .techs__text {
+    max-width: 292px;
+    margin-top: 24px;
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: -0.44px;
+  }
+
+  .techs__lang-wrapper {
+    max-width: 178px;
+    margin: 50px auto 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .techs__lang {
+    width: 84px;
+    height: 57px;
+    font-size: 12px;
+    line-height: normal;
+    letter-spacing: -0.48px;
+  }
+}

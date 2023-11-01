@@ -32,3 +32,10 @@
     width: calc(100% - 60px);
   }
 }
+
+@media screen and (max-width: 767px) {
+  .preloader__container {
+    width: calc(100% - 20px);
+    margin: 50px auto 80px auto;
+  }
+}

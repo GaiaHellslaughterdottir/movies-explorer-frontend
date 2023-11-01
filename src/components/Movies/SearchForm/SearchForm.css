@@ -10,3 +10,10 @@
     padding: 70px 30px 89px 30px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .search-form {
+    max-width: 292px;
+    padding: 70px 14px 124px 14px;
+  }
+}

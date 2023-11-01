@@ -13,6 +13,7 @@ export default function Form(props) {
       <div class="form__footer-wrapper">
         { props.errorText && <span className="form__error">{ props.errorText }</span> }
         <SubmitButton buttonTitle={ props.buttonTitle }/>
+        { props.footerElement }
       </div>
     </form>
   );

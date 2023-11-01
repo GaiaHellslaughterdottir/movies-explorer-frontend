@@ -5,8 +5,8 @@ export default function Footer() {
     <footer className="footer">
       <p className="footer__title">Учебный проект Яндекс.Практикум х BeatFilm.</p>
       <div className="footer__wrapper">
-        <p>© 2020</p>
-        <div>
+        <p className="footer__copyright">© 2020</p>
+        <div className="footer__link-wrapper">
           <a className="footer__link">Яндекс.Практикум</a>
           <a className="footer__link">Github</a>
         </div>
