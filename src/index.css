@@ -23,6 +23,7 @@
 @import "components/Movies/FilterCheckbox/FilterCheckbox.css";
 @import "components/Movies/MoviesCardList/MoviesCardList.css";
 @import "components/Movies/Preloader/Preloader.css";
+@import "components/Navigation/Navigation.css";
 
 body {
   background-color: #202020;
@@ -98,3 +99,4 @@ body {
     max-width: 292px;
   }
 }
+

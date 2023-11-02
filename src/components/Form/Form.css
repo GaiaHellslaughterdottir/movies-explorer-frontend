@@ -57,6 +57,11 @@
   margin-top: 189px;
 }
 
+.form__movies-search  .form__footer-wrapper{
+  position: inherit;
+  margin: 0;
+}
+
 .form__error {
   color: #EE3465;
   text-align: center;
