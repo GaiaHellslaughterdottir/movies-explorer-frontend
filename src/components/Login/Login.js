@@ -2,13 +2,15 @@ import React from "react";
 import Logo from "../Logo/Logo";
 import Form from "../Form/Form";
 import FormField from "../Form/FormField/FormField";
-import {Link} from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 
 export default function Login(props) {
   return (
     <div className="login">
-      <Logo/>
+      <NavLink to="/">
+        <Logo/>
+      </NavLink>
       <Form className="form_login" formTitle="Рады видеть!" buttonTitle="Войти" name="login" footerElement={<p className="login__footer">
         Ещё не зарегистрированы? {<Link to="/signup" className="login__footer-link">Регистрация</Link>}</p>}>
 

@@ -61,7 +61,7 @@
 
 .navigation__link_login {
   font-size: 12px;
-  margin-left: 20px;
+  margin-right: 10px;
   color: #FFF;
   text-align: right;
   font-style: normal;
@@ -136,6 +136,10 @@
   cursor: pointer;
 }
 
+.navigation__signin-wrapper {
+  margin: 0;
+}
+
 @media screen and (max-width: 1279px) {
   .navigation__links-wrapper {
     margin-top: 159px;
@@ -152,6 +156,10 @@
   .navigation__account-wrapper {
     margin-bottom: 92px;
     margin-top: 28px;
+  }
+
+  .navigation__profile-link-wrapper {
+    background-color: #313131;
   }
 
   .navigation__link:hover {
@@ -171,4 +179,25 @@
     display: block;
   }
 
+  .navigation__link_login {
+    margin: 0;
+  }
+
+  .navigation__signin-wrapper {
+    margin-top: 28px;
+    margin-bottom: 92px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .navigation__wrapper-small-size {
+    width: 320px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .navigation__link:hover {
+    text-underline-offset: 7px;
+  }
 }

@@ -35,12 +35,13 @@ export default function Navigation(props) {
         <div className="navigation__menu-close-icon" style={{ display: isSmallSize && isMenuOpened ? 'block' : 'none' }}
              onClick={ handleToggleMenu }/>
 
-        <div className="navigation__links-wrapper">
+        { props.loggedIn && <div className="navigation__links-wrapper">
           <NavLink to="/" className="navigation__link navigation__link_invisible">Главная</NavLink>
           <NavLink to="/movies" className="navigation__link">Фильмы</NavLink>
           <NavLink to="/saved-movies" className="navigation__link">Сохранённые фильмы</NavLink>
-        </div>
-        <div className="navigation__account-wrapper">
+        </div>}
+
+        { props.loggedIn && <div className="navigation__account-wrapper">
           <NavLink to="/profile" className="navigation__profile">
             Аккаунт
             <div
@@ -48,7 +49,16 @@ export default function Navigation(props) {
               <div className="navigation__profile-icon"/>
             </div>
           </NavLink>
-        </div>
+        </div>}
+
+        { !props.loggedIn && <div className="navigation__links-wrapper">
+          <NavLink to="/signup" className="navigation__link navigation__link_login">Регистрация</NavLink>
+          </div> }
+
+        { !props.loggedIn && <NavLink className="navigation__signin-wrapper" to="/signin"><button className="button">Войти</button></NavLink> }
+
+
+
       </div>
     </div>
 

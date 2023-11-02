@@ -4,6 +4,7 @@ import Form from "../Form/Form";
 import FormField from "../Form/FormField/FormField";
 import Header from "../Header/Header";
 import SubmitButton from "../Form/SubmitButton/SubmitButton";
+import { NavLink } from "react-router-dom";
 
 export default function Profile(props) {
   const [edited, setEdited] = React.useState(false);

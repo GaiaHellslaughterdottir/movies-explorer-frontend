@@ -2,12 +2,15 @@ import React from "react";
 import Logo from "../Logo/Logo";
 import Form from "../Form/Form";
 import FormField from "../Form/FormField/FormField";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Register() {
   return (
     <div className="register">
-      <Logo/>
+      <NavLink to="/">
+        <Logo/>
+      </NavLink>
+
       <Form formTitle="Добро пожаловать!" buttonTitle="Зарегистрироваться"
             name="register" submitButtonClassNameModifier="submit-button_green"
             footerElement={ <p className="login__footer">

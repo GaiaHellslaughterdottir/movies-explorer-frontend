@@ -5,13 +5,13 @@ import Navigation from "../Navigation/Navigation";
 export default function Header(props) {
   return (
     <header className={ `header ${ window.location.pathname === "/" ? "header_blue" : "" }` }>
-      <NavLink to="/" ><div className="logo"/></NavLink>
+      <NavLink to="/">
+        <div className="logo"/>
+      </NavLink>
 
-<Navigation loggedIn={props.loggedIn}/>
+      <Navigation loggedIn={ props.loggedIn }/>
 
-
-
-     {/* { props.loggedIn && <div className="navigation-new">
+      {/* { props.loggedIn && <div className="navigation-new">
 
         <NavLink to="/movies" className="navigation__link">Фильмы</NavLink>
         <NavLink to="/saved-movies" className="navigation__link">Сохранённые фильмы</NavLink>
@@ -30,7 +30,7 @@ export default function Header(props) {
 
       { !props.loggedIn && <div className="navigation__profile navigation__profile_login">
         <NavLink to="/signin"><button className="button">Войти</button></NavLink>
-      </div> }*/}
+      </div> }*/ }
 
     </header>
   );
