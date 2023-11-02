@@ -25,6 +25,7 @@
 }
 
 .portfolio__link {
+  text-decoration: none;
   color: #FFF;
   font-size: 30px;
   font-style: normal;

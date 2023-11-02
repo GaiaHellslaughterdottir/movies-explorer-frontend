@@ -18,52 +18,6 @@
   background-color: #073042;
 }
 
-.header__profile {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-left: 50px;
-  text-decoration: none;
-  color: #FFF;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 16px;
-  -webkit-transition: color .5s ease-out;
-  -moz-transition: color .5s ease-out;
-  -o-transition: color .5s ease-out;
-  transition: color .5s ease-out;
-}
-
-.header__profile:hover {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.header__profile_login {
-  margin-left: 30px;
-}
-
-.header__profile-link-wrapper {
-  width: 30px;
-  height: 30px;
-  border-radius: 6px;
-  background-color: #0F4157;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 13px;
-}
-
-.header__profile-link-wrapper_grey {
-  background-color: #313131;
-}
-
-.header__profile-icon {
-  background-image: url("../../images/profile-icon.png");
-  width: 12px;
-  height: 12px;
-}
-
 @media screen and (max-width: 1279px) {
   .header {
     padding-left: 30px;
