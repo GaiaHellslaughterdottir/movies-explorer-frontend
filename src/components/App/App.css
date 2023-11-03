@@ -1,0 +1,66 @@
+.page {
+  max-width: 1280px;
+  margin: auto;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+}
+
+.page__line {
+  margin: auto;
+  border-top: 1px solid rgba(170, 170, 170, 0.2);
+  border-bottom: none;
+  max-width: 1140px;
+  border-left: none;
+  border-right: none;
+}
+
+.page-not-found {
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  color: #FFF;
+  text-align: center;
+  width: 396px;
+  margin: auto;
+  padding-top: 70px;
+  font-style: normal;
+  line-height: normal;
+}
+
+.page-not-found__title {
+  font-size: 140px;
+  font-weight: 400;
+  margin-top: 246px;
+}
+
+.page-not-found__subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 5px;
+}
+
+.page-not-found__link-wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: 60px;
+}
+
+@media screen and (max-width: 1279px) {
+  .page {
+    max-width: 768px;
+  }
+
+  .page__line {
+    max-width: 708px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .page {
+    max-width: 320px;
+  }
+
+  .page__line {
+    max-width: 292px;
+  }
+}

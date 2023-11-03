@@ -22,16 +22,12 @@
   transition: background-color .5s ease-out;
 }
 
-.submit-button_green {
-  background-color: #3DDC84;
-}
-
-.form_edit-profile .submit-button {
+.form__edit-profile .submit-button {
   width: 410px;
   margin-top: 20px;
 }
 
-.form_login .submit-button {
+.form__login .submit-button {
   margin-top: 20px;
 }
 

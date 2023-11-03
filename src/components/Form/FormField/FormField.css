@@ -10,7 +10,7 @@
   display: block;
 }
 
-.form_edit-profile .form__field-wrapper {
+.form__edit-profile .form__field-wrapper {
   border-bottom: 1px solid rgba(66, 66, 66, 1);
   display: flex;
   flex-direction: row;
@@ -27,11 +27,11 @@
   padding: 0;
 }
 
-.form_edit-profile .form__field-wrapper:last-of-type {
+.form__edit-profile .form__field-wrapper:last-of-type {
   border-bottom: none;
 }
 
-.form_edit-profile .form__field-title {
+.form__edit-profile .form__field-title {
   height: 14px;
   width: 100px;
   color: white;
@@ -39,7 +39,7 @@
   font-weight: 500;
 }
 
-.form_edit-profile .form__field {
+.form__edit-profile .form__field {
   width: 200px;
   text-align: right;
   height: 14px;
@@ -88,7 +88,7 @@
   border-bottom: 1px solid rgba(66, 133, 244, 1);
 }
 
-.form_edit-profile .form__field:focus {
+.form__edit-profile .form__field:focus {
   border-bottom: none;
 }
 

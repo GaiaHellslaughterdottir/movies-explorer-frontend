@@ -11,11 +11,11 @@ export default function Login() {
       <NavLink to="/">
         <Logo/>
       </NavLink>
-      <Form className="form_login" formTitle="Рады видеть!" buttonTitle="Войти" name="login" footerElement={<p className="login__footer">
+      <Form className="form__login" formTitle="Рады видеть!" buttonTitle="Войти" name="login" footerElement={<p className="login__footer">
         Ещё не зарегистрированы? {<Link to="/signup" className="login__footer-link">Регистрация</Link>}</p>}>
 
         <FormField fieldTitle="E-mail" errorTitle="Ошибка">
-          <input placeholder="Виталий"
+          <input value="Виталий"
                  minLength="2"
                  maxLength="30"
                  type="text"
@@ -25,7 +25,7 @@ export default function Login() {
                  required/>
         </FormField>
         <FormField fieldTitle="Пароль" errorTitle="Ошибка">
-          <input placeholder="Виталий"
+          <input value="Виталий"
                  minLength="2"
                  maxLength="30"
                  type="password"

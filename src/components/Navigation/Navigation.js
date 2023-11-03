@@ -53,9 +53,7 @@ export default function Navigation(props) {
           <NavLink to="/signup" className="navigation__link navigation__link_login">Регистрация</NavLink>
           </div> }
 
-        { !props.loggedIn && <NavLink className="navigation__signin-wrapper" to="/signin"><button className="button">Войти</button></NavLink> }
-
-
+        { !props.loggedIn && <NavLink className="navigation__signin-wrapper" to="/signin"><button className="navigation__signin-button">Войти</button></NavLink> }
 
       </div>
     </div>

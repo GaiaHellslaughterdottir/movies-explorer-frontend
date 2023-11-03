@@ -11,8 +11,9 @@ export default function Register() {
         <Logo/>
       </NavLink>
 
-      <Form formTitle="Добро пожаловать!" buttonTitle="Зарегистрироваться"
-            name="register" submitButtonClassNameModifier="submit-button_green"
+      <Form formTitle="Добро пожаловать!"
+            buttonTitle="Зарегистрироваться"
+            name="register"
             footerElement={ <p className="login__footer">
               Уже зарегистрированы? { <Link to="/signin" className="login__footer-link">Войти</Link> }</p> }>
 
