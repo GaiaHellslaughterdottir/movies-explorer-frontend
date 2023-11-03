@@ -1,14 +1,12 @@
 import React from "react";
-import { Link, useLocation, Route, NavLink } from "react-router-dom";
+import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { useWindowSize } from 'usehooks-ts'
-
-const { useRef } = require("react");
-const { useEffect } = require("react");
 
 export default function Navigation(props) {
   const [isMenuOpened, setIsMenuOpened] = React.useState(false);
   const [isSmallSize, setIsSmallSize] = React.useState(false);
-  const { width, height } = useWindowSize();
+  const { width } = useWindowSize();
 
   useEffect(() => {
     changeMode(width);

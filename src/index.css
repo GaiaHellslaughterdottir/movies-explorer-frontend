@@ -17,7 +17,6 @@
 @import "components/Login/Login.css";
 @import "components/Form/SubmitButton/SubmitButton.css";
 @import "components/Profile/Profile.css";
-@import "components/Button/Button.css";
 @import "components/SavedMovies/SavedMovies.css";
 @import "components/Movies/SearchForm/SearchForm.css";
 @import "components/Movies/FilterCheckbox/FilterCheckbox.css";
@@ -27,16 +26,12 @@
 
 body {
   background-color: #202020;
-  /*
-  background-color: bisque;
-  */
-
 }
 
 .page {
   max-width: 1280px;
   margin: auto;
-  font-family: Inter, serif;
+  font-family: Inter, Arial, Helvetica, sans-serif;
   font-style: normal;
 }
 
@@ -50,7 +45,7 @@ body {
 }
 
 .page-not-found {
-  font-family: Inter, serif;
+  font-family: Inter, Arial, Helvetica, sans-serif;
   color: #FFF;
   text-align: center;
   width: 396px;
@@ -99,4 +94,3 @@ body {
     max-width: 292px;
   }
 }
-

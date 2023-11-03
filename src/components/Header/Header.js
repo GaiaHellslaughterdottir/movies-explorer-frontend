@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation, Route, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 
 export default function Header(props) {

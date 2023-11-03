@@ -6,4 +6,4 @@ export default function Preloader() {
           <button className="preloader__container" type="button">Ещё</button>
         </div>
     )
-};
+}

@@ -2,16 +2,12 @@ import React from "react";
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 
 import ProtectedRouteElement from "../ProtectedRoute";
-import Footer from "../Footer/Footer";
-import Register from "../Register/Register";
-import Login from "../Login/Login";
 import MainPage from "../../pages/MainPage";
 import MoviesPage from "../../pages/MoviesPage";
 import SavedMoviesPage from "../../pages/SavedMoviesPage";
 import ProfilePage from "../../pages/ProfilePage";
 import SignInPage from "../../pages/SignInPage";
 import SignUpPage from "../../pages/SignUpPage";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import PageNotFound from "../../pages/PageNotFound";
 
 function App() {
@@ -48,7 +44,6 @@ function App() {
       <Route path="*" element={ <PageNotFound/> }/>
 
     </Routes>
-
 
   );
 }

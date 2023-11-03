@@ -5,7 +5,7 @@ import FormField from "../Form/FormField/FormField";
 import { Link, NavLink } from "react-router-dom";
 
 
-export default function Login(props) {
+export default function Login() {
   return (
     <div className="login">
       <NavLink to="/">
@@ -15,7 +15,7 @@ export default function Login(props) {
         Ещё не зарегистрированы? {<Link to="/signup" className="login__footer-link">Регистрация</Link>}</p>}>
 
         <FormField fieldTitle="E-mail" errorTitle="Ошибка">
-          <input value="Виталий"
+          <input placeholder="Виталий"
                  minLength="2"
                  maxLength="30"
                  type="text"
@@ -25,7 +25,7 @@ export default function Login(props) {
                  required/>
         </FormField>
         <FormField fieldTitle="Пароль" errorTitle="Ошибка">
-          <input value="Виталий"
+          <input placeholder="Виталий"
                  minLength="2"
                  maxLength="30"
                  type="password"

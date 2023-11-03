@@ -12,7 +12,7 @@ export default function AboutMe() {
             и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании
             «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с
             постоянной работы.</p>
-          <a className="about-me__link" target="_blank" href="https://github.com/GaiaHellslaughterdottir">Github</a>
+          <a className="about-me__link" target="_blank" rel="noreferrer" href="https://github.com/GaiaHellslaughterdottir">Github</a>
         </div>
         <div className="about-me__photo"/>
       </div>

@@ -1,5 +1,4 @@
 import React from "react";
-import Logo from "../Logo/Logo";
 import SubmitButton from "./SubmitButton/SubmitButton";
 
 export default function Form(props) {

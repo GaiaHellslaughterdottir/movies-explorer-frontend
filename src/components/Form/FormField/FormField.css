@@ -80,6 +80,10 @@
   padding: 0 0 10px 0;
 }
 
+.form__field::placeholder {
+  color: #FFFFFF;
+}
+
 .form__field:focus {
   border-bottom: 1px solid rgba(66, 133, 244, 1);
 }
