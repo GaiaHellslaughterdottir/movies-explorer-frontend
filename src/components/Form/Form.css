@@ -14,21 +14,21 @@
   margin-top: 40px;
 }
 
-.form__edit-profile {
+.form_edit-profile {
  width: 410px;
 }
 
-.form__edit-profile .form__title {
+.form_edit-profile .form__title {
   margin-top: 74px;
   text-align: center;
   margin-bottom: 123px;
 }
 
-.form__login {
+.form_login {
   width: 396px;
 }
 
-.form__movies-search {
+.form_movies-search {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -53,11 +53,11 @@
   margin: 0 auto 0 auto;
 }
 
-.form__edit-profile .form__footer-wrapper {
+.form_edit-profile .form__footer-wrapper {
   margin-top: 189px;
 }
 
-.form__movies-search .form__footer-wrapper{
+.form_movies-search .form__footer-wrapper{
   position: inherit;
   margin: 0;
 }
@@ -76,7 +76,7 @@
     width: 260px;
   }
 
-  .form__movies-search {
+  .form_movies-search {
     height: 56px;
     flex-wrap: nowrap;
   }
@@ -86,11 +86,11 @@
     margin: 80px auto 50px auto;
   }
 
-  .form__login {
+  .form_login {
     width: 260px;
   }
 
-  .form__edit-profile {
+  .form_edit-profile {
     width: 320px;
   }
 }

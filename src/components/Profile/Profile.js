@@ -9,7 +9,7 @@ export default function Profile(props) {
 
     <div className="profile">
 
-      { edited && <Form className="form__edit-profile" formTitle="Bonjour Nicolas!" buttonTitle="Сохранить"
+      { edited && <Form className="form_edit-profile" formTitle="Bonjour Nicolas!" buttonTitle="Сохранить"
                         errorText="При обновлении профиля произошла ошибка." name="login">
         <FormField fieldTitle="Имя">
           <input placeholder="Name"

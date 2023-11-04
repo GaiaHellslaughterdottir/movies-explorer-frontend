@@ -5,8 +5,8 @@ import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
 export default function SearchForm() {
   return (
-    <section className="search-form">
-      <Form className="form__movies-search" buttonTitle="Поиск" name="movies-search">
+    <div className="search-form">
+      <Form className="form_movies-search" buttonTitle="Поиск" name="movies-search">
 
         <FormField>
           <input placeholder="Фильм"
@@ -26,6 +26,6 @@ export default function SearchForm() {
       </Form>
 
 
-    </section>
+    </div>
   );
 }

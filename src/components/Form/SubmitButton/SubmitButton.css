@@ -22,12 +22,12 @@
   transition: background-color .5s ease-out;
 }
 
-.form__edit-profile .submit-button {
+.form_edit-profile .submit-button {
   width: 410px;
   margin-top: 20px;
 }
 
-.form__login .submit-button {
+.form_login .submit-button {
   margin-top: 20px;
 }
 

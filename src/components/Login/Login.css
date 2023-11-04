@@ -4,7 +4,7 @@
   padding-top: 70px;
 }
 
-.login__footer {
+.form__login-footer {
   color: #8B8B8B;
   text-align: center;
   font-size: 14px;
@@ -14,7 +14,7 @@
   margin-top: 16px;
 }
 
-.login__footer-link {
+.form__login-footer-link {
   color: #4285F4;
   text-decoration: none;
   cursor: pointer;
@@ -24,12 +24,12 @@
   transition: color .5s ease-out;
 }
 
-.login__footer-link:hover {
+.form__login-footer-link:hover {
   color: #2D6EDB;
 }
 
 @media screen and (max-width: 767px) {
-  .login__footer {
+  .form__login-footer {
     font-size: 12px;
   }
 

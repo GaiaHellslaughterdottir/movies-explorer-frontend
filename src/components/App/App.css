@@ -43,6 +43,20 @@
   bottom: 60px;
 }
 
+.page-not-found__link {
+  color: #4285F4;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-transition: color .5s ease-out;
+  -moz-transition: color .5s ease-out;
+  -o-transition: color .5s ease-out;
+  transition: color .5s ease-out;
+}
+
+.page-not-found__link:hover {
+  color: #2D6EDB;
+}
+
 @media screen and (max-width: 1279px) {
   .page__line {
     margin: auto 30px auto 30px;

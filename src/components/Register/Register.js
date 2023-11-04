@@ -14,8 +14,8 @@ export default function Register() {
       <Form formTitle="Добро пожаловать!"
             buttonTitle="Зарегистрироваться"
             name="register"
-            footerElement={ <p className="login__footer">
-              Уже зарегистрированы? { <Link to="/signin" className="login__footer-link">Войти</Link> }</p> }>
+            footerElement={ <p className="form__login-footer">
+              Уже зарегистрированы? { <Link to="/signin" className="form__login-footer-link">Войти</Link> }</p> }>
 
         <FormField fieldTitle="Имя" errorTitle="Ошибка">
           <input placeholder="Имя"

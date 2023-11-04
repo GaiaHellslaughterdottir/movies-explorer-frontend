@@ -11,8 +11,8 @@ export default function Login() {
       <NavLink to="/">
         <Logo/>
       </NavLink>
-      <Form className="form__login" formTitle="Рады видеть!" buttonTitle="Войти" name="login" footerElement={<p className="login__footer">
-        Ещё не зарегистрированы? {<Link to="/signup" className="login__footer-link">Регистрация</Link>}</p>}>
+      <Form className="form_login" formTitle="Рады видеть!" buttonTitle="Войти" name="login" footerElement={<p className="form__login-footer">
+        Ещё не зарегистрированы? {<Link to="/signup" className="form__login-footer-link">Регистрация</Link>}</p>}>
 
         <FormField fieldTitle="E-mail" errorTitle="Ошибка">
           <input placeholder="Имя"
