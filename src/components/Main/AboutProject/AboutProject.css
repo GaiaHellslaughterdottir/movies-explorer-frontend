@@ -86,7 +86,6 @@
 
 @media screen and (max-width: 1279px) {
   .about-project {
-    max-width: 768px;
     padding: 90px 50px;
   }
 
@@ -102,7 +101,6 @@
 
 @media screen and (max-width: 767px) {
   .about-project {
-    max-width: 284px;
     padding: 70px 18px;
     margin: auto;
   }

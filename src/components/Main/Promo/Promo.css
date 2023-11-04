@@ -60,7 +60,6 @@
 @media screen and (max-width: 1279px) {
   .promo {
     margin: auto;
-    max-width: 768px;
     display: block;
     background-position-x: center;
     background-position-y: 140px;
@@ -89,7 +88,6 @@
 @media screen and (max-width: 767px) {
   .promo {
     margin: auto;
-    max-width: 320px;
     display: block;
     background-size: 210px 206px;
     background-position-x: center;

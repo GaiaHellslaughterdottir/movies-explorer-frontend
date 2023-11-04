@@ -68,7 +68,6 @@
 
 @media screen and (max-width: 1279px) {
   .techs {
-    max-width: 768px;
     padding: 90px 50px;
   }
 
@@ -100,7 +99,6 @@
 @media screen and (max-width: 767px) {
   .techs {
     margin: auto;
-    max-width: 284px;
     padding: 70px 18px;
   }
 

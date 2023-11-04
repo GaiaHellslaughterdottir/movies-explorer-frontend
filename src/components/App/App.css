@@ -1,5 +1,4 @@
 .page {
-  max-width: 1280px;
   margin: auto;
   font-family: Inter, Arial, Helvetica, sans-serif;
   font-style: normal;
@@ -46,9 +45,7 @@
 }
 
 @media screen and (max-width: 1279px) {
-  .page {
-    max-width: 768px;
-  }
+
 
   .page__line {
     max-width: 708px;
@@ -56,9 +53,7 @@
 }
 
 @media screen and (max-width: 767px) {
-  .page {
-    max-width: 320px;
-  }
+
 
   .page__line {
     max-width: 292px;
