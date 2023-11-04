@@ -5,10 +5,9 @@
 }
 
 .page__line {
-  margin: auto;
+  margin: auto 70px auto 70px;
   border-top: 1px solid rgba(170, 170, 170, 0.2);
   border-bottom: none;
-  max-width: 1140px;
   border-left: none;
   border-right: none;
 }
@@ -45,17 +44,13 @@
 }
 
 @media screen and (max-width: 1279px) {
-
-
   .page__line {
-    max-width: 708px;
+    margin: auto 30px auto 30px;
   }
 }
 
 @media screen and (max-width: 767px) {
-
-
   .page__line {
-    max-width: 292px;
+    margin: auto 14px auto 14px;
   }
 }

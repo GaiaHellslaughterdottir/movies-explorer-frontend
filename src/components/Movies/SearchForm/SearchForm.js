@@ -9,7 +9,7 @@ export default function SearchForm() {
       <Form className="form__movies-search" buttonTitle="Поиск" name="movies-search">
 
         <FormField>
-          <input value="Фильм"
+          <input placeholder="Фильм"
                  minLength="2"
                  maxLength="30"
                  type="text"

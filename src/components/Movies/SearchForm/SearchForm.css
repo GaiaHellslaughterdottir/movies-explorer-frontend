@@ -1,5 +1,4 @@
 .search-form {
-  max-width: 1140px;
   margin: auto;
   position: relative;
   padding: 70px 70px 89px 70px;
@@ -13,7 +12,6 @@
 
 @media screen and (max-width: 767px) {
   .search-form {
-    max-width: 292px;
     padding: 70px 14px 124px 14px;
   }
 }

@@ -18,7 +18,7 @@ export default function Register() {
               Уже зарегистрированы? { <Link to="/signin" className="login__footer-link">Войти</Link> }</p> }>
 
         <FormField fieldTitle="Имя" errorTitle="Ошибка">
-          <input value="Виталий"
+          <input placeholder="Имя"
                  minLength="2"
                  maxLength="30"
                  type="text"
@@ -28,7 +28,7 @@ export default function Register() {
                  required/>
         </FormField>
         <FormField fieldTitle="E-mail" errorTitle="Ошибка">
-          <input value="Виталий"
+          <input placeholder="Е-мэйл"
                  minLength="2"
                  maxLength="30"
                  type="text"
@@ -38,7 +38,7 @@ export default function Register() {
                  required/>
         </FormField>
         <FormField fieldTitle="Пароль" errorTitle="Ошибка">
-          <input value="Виталий"
+          <input placeholder="Пароль"
                  minLength="2"
                  maxLength="30"
                  type="password"

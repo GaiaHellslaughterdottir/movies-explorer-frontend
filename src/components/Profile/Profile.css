@@ -1,5 +1,4 @@
 .profile {
-  max-width: 100%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -91,7 +90,8 @@
 
 @media screen and (max-width: 767px) {
   .profile {
-    max-width: 320px;
+    margin: auto;
+    width: 320px;
   }
 
   .profile__wrapper {

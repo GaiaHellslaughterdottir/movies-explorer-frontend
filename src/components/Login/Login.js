@@ -15,7 +15,7 @@ export default function Login() {
         Ещё не зарегистрированы? {<Link to="/signup" className="login__footer-link">Регистрация</Link>}</p>}>
 
         <FormField fieldTitle="E-mail" errorTitle="Ошибка">
-          <input value="Виталий"
+          <input placeholder="Имя"
                  minLength="2"
                  maxLength="30"
                  type="text"
@@ -25,7 +25,7 @@ export default function Login() {
                  required/>
         </FormField>
         <FormField fieldTitle="Пароль" errorTitle="Ошибка">
-          <input value="Виталий"
+          <input placeholder="Пароль"
                  minLength="2"
                  maxLength="30"
                  type="password"

@@ -209,9 +209,6 @@
 @media screen and (max-width: 767px) {
   .navigation__wrapper-small-size {
     width: 320px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
 
   .navigation__link:hover {

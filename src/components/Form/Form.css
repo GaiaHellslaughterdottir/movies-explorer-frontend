@@ -41,7 +41,7 @@
 }
 
 .form__fields-wrapper {
-  width: 396px;
+  max-width: 396px;
 }
 
 .form__footer-wrapper {
@@ -57,7 +57,7 @@
   margin-top: 189px;
 }
 
-.form__movies-search  .form__footer-wrapper{
+.form__movies-search .form__footer-wrapper{
   position: inherit;
   margin: 0;
 }
@@ -77,7 +77,6 @@
   }
 
   .form__movies-search {
-    max-width: 292px;
     height: 56px;
     flex-wrap: nowrap;
   }
@@ -89,5 +88,9 @@
 
   .form__login {
     width: 260px;
+  }
+
+  .form__edit-profile {
+    width: 320px;
   }
 }
