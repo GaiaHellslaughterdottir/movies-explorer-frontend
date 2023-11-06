@@ -1,0 +1,70 @@
+.page {
+  margin: auto;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-style: normal;
+}
+
+.page__line {
+  margin: auto 70px auto 70px;
+  border-top: 1px solid rgba(170, 170, 170, 0.2);
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+}
+
+.page-not-found {
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  color: #FFF;
+  text-align: center;
+  width: 396px;
+  margin: auto;
+  padding-top: 70px;
+  font-style: normal;
+  line-height: normal;
+}
+
+.page-not-found__title {
+  font-size: 140px;
+  font-weight: 400;
+  margin-top: 246px;
+}
+
+.page-not-found__subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 5px;
+}
+
+.page-not-found__link-wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: 60px;
+}
+
+.page-not-found__link {
+  color: #4285F4;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-transition: color .5s ease-out;
+  -moz-transition: color .5s ease-out;
+  -o-transition: color .5s ease-out;
+  transition: color .5s ease-out;
+}
+
+.page-not-found__link:hover {
+  color: #2D6EDB;
+}
+
+@media screen and (max-width: 1279px) {
+  .page__line {
+    margin: auto 30px auto 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .page__line {
+    margin: auto 14px auto 14px;
+  }
+}

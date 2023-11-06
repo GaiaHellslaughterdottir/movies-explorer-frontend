@@ -1,0 +1,41 @@
+.preloader {
+  max-width: 100%;
+}
+
+.preloader__container {
+  display: block;
+  margin: auto;
+  cursor: pointer;
+  border: 0;
+  width: calc(100% - 140px);
+  height: 36px;
+  border-radius: 6px;
+  background-color: #2F2F2F;
+  color: #FFF;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  -webkit-transition: background-color .5s ease-out;
+  -moz-transition: background-color .5s ease-out;
+  -o-transition: background-color .5s ease-out;
+  transition: background-color .5s ease-out;
+}
+
+.preloader__container:hover {
+  background-color: #4285F4;
+}
+
+@media screen and (max-width: 1279px) {
+  .preloader__container {
+    width: calc(100% - 60px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .preloader__container {
+    width: calc(100% - 20px);
+    margin: 50px auto 80px auto;
+  }
+}

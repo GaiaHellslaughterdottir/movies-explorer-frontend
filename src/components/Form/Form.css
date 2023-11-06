@@ -1,0 +1,96 @@
+.form {
+  line-height: normal;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.form__title {
+  color: #FFF;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.form_edit-profile {
+ width: 410px;
+}
+
+.form_edit-profile .form__title {
+  margin-top: 74px;
+  text-align: center;
+  margin-bottom: 123px;
+}
+
+.form_login {
+  width: 396px;
+}
+
+.form_movies-search {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  height: 72px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(170, 170, 170, 0.2);
+}
+
+.form__fields-wrapper {
+  max-width: 396px;
+}
+
+.form__footer-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: fixed;
+  bottom: 70px;
+  margin: 0 auto 0 auto;
+}
+
+.form_edit-profile .form__footer-wrapper {
+  margin-top: 189px;
+}
+
+.form_movies-search .form__footer-wrapper{
+  position: inherit;
+  margin: 0;
+}
+
+.form__error {
+  color: #EE3465;
+  text-align: center;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media screen and (max-width: 767px) {
+  .form__fields-wrapper {
+    width: 260px;
+  }
+
+  .form_movies-search {
+    height: 56px;
+    flex-wrap: nowrap;
+  }
+
+  .form__title {
+    text-align: center;
+    margin: 80px auto 50px auto;
+  }
+
+  .form_login {
+    width: 260px;
+  }
+
+  .form_edit-profile {
+    width: 320px;
+  }
+}

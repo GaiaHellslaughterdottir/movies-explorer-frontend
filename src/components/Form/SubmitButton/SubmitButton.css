@@ -1,0 +1,55 @@
+.submit-button {
+  width: 396px;
+  line-height: normal;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  height: 45px;
+  border-radius: 3px;
+  background-color: #4285F4;
+  border: 0;
+  color: #FFFFFF;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 20px;
+  -webkit-transition: background-color .5s ease-out;
+  -moz-transition: background-color .5s ease-out;
+  -o-transition: background-color .5s ease-out;
+  transition: background-color .5s ease-out;
+}
+
+.form_edit-profile .submit-button {
+  width: 410px;
+  margin-top: 20px;
+}
+
+.form_login .submit-button {
+  margin-top: 20px;
+}
+
+.search-form .submit-button {
+  width: 100px;
+  height: 52px;
+  margin: 0 10px 0 0;
+}
+
+.submit-button:hover {
+  background-color: #2D6EDB;
+}
+
+@media screen and (max-width: 767px) {
+  .search-form .submit-button {
+    width: 80px;
+    height: 44px;
+    margin: 0 6px 0 0;
+  }
+
+  .submit-button {
+    width: 260px;
+    font-size: 12px;
+  }
+}

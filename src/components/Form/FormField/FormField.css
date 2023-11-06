@@ -1,0 +1,129 @@
+.form__field-wrapper {
+  padding: 0 0 10px 0;
+}
+
+.form__field-title {
+  width: 100%;
+  height: 12px;
+  color: #8B8B8B;
+  font-size: 10px;
+  display: block;
+}
+
+.form_edit-profile .form__field-wrapper {
+  border-bottom: 1px solid rgba(66, 66, 66, 1);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 410px;
+  padding: 0 0 16px 0;
+  margin-bottom: 17px;
+}
+
+.form_movies-search .form__field-wrapper {
+  border-bottom: none;
+  padding: 0;
+}
+
+.form_edit-profile .form__field-wrapper:last-of-type {
+  border-bottom: none;
+}
+
+.form_edit-profile .form__field-title {
+  height: 14px;
+  width: 100px;
+  color: white;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.form_edit-profile .form__field {
+  width: 200px;
+  text-align: right;
+  height: 14px;
+  margin: 0;
+  border-bottom: none;
+  padding: 0;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.form_movies-search .form__field {
+  border-bottom: none;
+  border-radius: 10px;
+  margin: auto auto auto 15px;
+  padding: 0 0 0 10px;
+  color: #8B8B8B;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.form_movies-search .form__field:focus {
+  background-color: #313131;
+  height: 40px;
+  border: none;
+}
+
+.form_movies-search .form__fields-wrapper {
+  max-width: inherit;
+  width: calc(100% - 180px);
+}
+
+.form__field {
+  width: 100%;
+  height: 17px;
+  margin: 5px 0 0 0;
+  color: #FFFFFF;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid rgba(66, 66, 66, 1);
+  outline: none;
+  background-color: #202020;
+  padding: 0 0 10px 0;
+}
+
+.form__field::placeholder {
+  color: #8B8B8B;
+}
+
+.form__field:focus {
+  border-bottom: 1px solid rgba(66, 133, 244, 1);
+}
+
+.form_edit-profile .form__field:focus {
+  border-bottom: none;
+}
+
+.form__field-error {
+  width: 100%;
+  color: #EE3465;
+  font-size: 10px;
+  display: block;
+  box-sizing: border-box;
+  height: 25px;
+  margin-top: 6px;
+}
+
+.form__field-short-checkbox {
+  position: absolute;
+  top: 168px;
+}
+
+.form__field-wrapper_filter-checkbox {
+  position: absolute;
+  top: 168px;
+}
+
+@media screen and (max-width: 767px) {
+  .form_movies-search .form__field {
+    font-size: 16px;
+  }
+
+  .form__field-wrapper_filter-checkbox {
+    top: 156px;
+  }
+}

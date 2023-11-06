@@ -1,0 +1,13 @@
+.logo {
+  background-image: url("../../images/header_logo.svg");
+  width: 38px;
+  height: 38px;
+  -webkit-transition: transform .5s ease-out;
+  -moz-transition: transform .5s ease-out;
+  -o-transition: transform .5s ease-out;
+  transition: transform .5s ease-out;
+}
+
+.logo:hover {
+  transform: rotate(180deg);
+}
