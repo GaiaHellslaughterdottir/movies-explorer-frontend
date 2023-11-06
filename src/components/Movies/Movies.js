@@ -3,12 +3,12 @@ import SearchForm from "./SearchForm/SearchForm";
 import MoviesCardList from "./MoviesCardList/MoviesCardList";
 import Preloader from "./Preloader/Preloader";
 
-export default function Movies() {
+export default function Movies(props) {
   return (
       <section className="movies">
         <SearchForm/>
         <hr className="page__line"/>
-        <MoviesCardList/>
+        <MoviesCardList movies={ props.movies }/>
         <Preloader/>
       </section>
   );

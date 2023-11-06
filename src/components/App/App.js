@@ -10,15 +10,91 @@ import SignInPage from "../../pages/SignInPage";
 import SignUpPage from "../../pages/SignUpPage";
 import PageNotFound from "../../pages/PageNotFound";
 
+import {auth} from "../../utils/AuthApi";
+import {moviesApi} from "../../utils/MoviesApi";
+import { mainApi } from "../../utils/MainApi";
+
+
 function App() {
 
-  const [loggedIn, setLoggedIn] = React.useState(true);
+  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [userInfo, setUserInfo] = React.useState({});
+  const [currentUser, setCurrentUser] = React.useState({});
+  const [movies, setMovies] = React.useState([]);
+
   const navigate = useNavigate();
+
+  React.useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token !== null && !loggedIn) {
+      setLoggedIn(true);
+      getAuthUserInfo(token);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    if(loggedIn) {
+      moviesApi.getMovieList()
+        .then((movieList) => {
+          if (movieList.length > 0) {
+            setMovies(movieList);
+          }
+          navigate(window.location.pathname, {replace: true});
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }, [userInfo]);
+
+  function handleLogin({email, password, isAfterRegister = false}) {
+    auth.postSignIn({email: email, password: password})
+      .then(({token}) => {
+        localStorage.setItem('token', token);
+        setLoggedIn(true);
+        getAuthUserInfo(token);
+        window.location.replace(isAfterRegister ? '/movies' : '/')
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  function handleRegister({name, email, password}) {
+    auth.postSignUp({name: name, email: email, password: password})
+      .then(() => {
+        handleLogin({email: email, password: password, isAfterRegister: true});
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  function getAuthUserInfo(token) {
+    auth.getUserInfo(token)
+      .then((userInfo) => {
+        setUserInfo(userInfo);
+        setCurrentUser(userInfo);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   function handleSignOut() {
     localStorage.removeItem('token');
     setLoggedIn(false);
     navigate('/', { replace: true });
+  }
+
+  function handleEditProfile({name, email}) {
+    mainApi.patchUserProfileInfo({name: name, email: email})
+      .then((userInfo) => {
+        setCurrentUser(userInfo);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
@@ -27,7 +103,7 @@ function App() {
       <Route path="/" element={ <MainPage loggedIn={ loggedIn }/> }/>
       <Route path="/movies"
              element={ loggedIn ?
-               <ProtectedRouteElement element={ MoviesPage }
+               <ProtectedRouteElement element={ MoviesPage } movies={ movies } currentUser={currentUser}
                                       loggedIn={ loggedIn }/> : <Navigate to="/movies" replace/> }/>
       <Route path="/saved-movies"
              element={ loggedIn ?
@@ -35,11 +111,14 @@ function App() {
                                       loggedIn={ loggedIn }/> : <Navigate to="/saved-movies" replace/> }/>
       <Route path="/profile"
              element={ loggedIn ?
-               <ProtectedRouteElement element={ ProfilePage } onSignOut={ handleSignOut }
+               <ProtectedRouteElement element={ ProfilePage }
+                                      onEditProfile={ handleEditProfile }
+                                      onSignOut={ handleSignOut }
+                                      userInfo={ userInfo }
                                       loggedIn={ loggedIn }/> : <Navigate to="/profile" replace/> }/>
-      <Route path="signin" element={ <SignInPage/> }/>
+      <Route path="signin" element={ <SignInPage onLogin={ handleLogin }/> }/>
 
-      <Route path="signup" element={ <SignUpPage/> }/>
+      <Route path="signup" element={ <SignUpPage onRegister={handleRegister}/> }/>
 
       <Route path="*" element={ <PageNotFound/> }/>
 
