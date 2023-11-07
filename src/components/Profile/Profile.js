@@ -1,26 +1,25 @@
 import React from "react";
+import { useForm } from 'react-hook-form';
+
 import Form from "../Form/Form";
 import FormField from "../Form/FormField/FormField";
 
 export default function Profile(props) {
-  const [edited, setEdited] = React.useState(false);
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
+  const { register, handleSubmit, setValue, formState: { errors } } = useForm({ mode: 'all' });
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  const [edited, setEdited] = React.useState(false);
+
+  function onSubmit(data) {
     props.onEditProfile({
-      name,
-      email,
+      name: data.name,
+      email: data.email,
     });
   }
 
   React.useEffect(() => {
-    if (props.userInfo.name !== undefined) {
-      setName(props.userInfo.name);
-    }
-    if (props.userInfo.email !== undefined) {
-      setEmail(props.userInfo.email);
+    if (props.userInfo.name !== undefined && props.userInfo.email !== undefined) {
+      setValue('name', props.userInfo.name);
+      setValue('email', props.userInfo.email);
     }
   }, [props.userInfo]);
 
@@ -29,33 +28,33 @@ export default function Profile(props) {
     <div className="profile">
 
       { edited && <Form className="form_edit-profile"
-                        onSubmit={handleSubmit}
+                        onSubmit={ handleSubmit(onSubmit) }
                         formTitle="Bonjour Nicolas!"
                         buttonTitle="Сохранить"
+                        submitButtonDisabled={Object.keys(errors).length !== 0}
                         errorText="При обновлении профиля произошла ошибка." name="login">
-        <FormField fieldTitle="Имя">
-          <input value={name}
-                 onChange={e => setName(e.target.value)}
-                 placeholder="Name"
-                 minLength="2"
-                 maxLength="30"
-                 type="text"
-                 name="name"
-                 className="form__field"
-                 id="form__field-name"
-                 required/>
+        <FormField fieldTitle="Имя" errorTitle={errors.name !== undefined ? 'Имя задано не корректно' : null}>
+          <input
+            placeholder="Name"
+            type="text"
+            className="form__field"
+            id="form__field-name"
+            { ...register('name', { required: true, maxLength: 30, minLength: 2 }) }
+          />
         </FormField>
-        <FormField fieldTitle="E-mail">
-          <input value={email}
-                 onChange={e => setEmail(e.target.value)}
-                 placeholder="E-mail"
-                 minLength="2"
-                 maxLength="30"
-                 type="text"
-                 name="email"
-                 className="form__field"
-                 id="form__field-email"
-                 required/>
+        <FormField fieldTitle="E-mail" errorTitle={errors.email !== undefined ? 'Емэйл задан не корректно' : null}>
+          <input
+            placeholder="E-mail"
+            type="email"
+            className="form__field"
+            id="form__field-email"
+            { ...register('email', {
+              required: true, maxLength: 30, minLength: 2,
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+              }
+            }) }
+          />
         </FormField>
       </Form> }
 
@@ -64,11 +63,11 @@ export default function Profile(props) {
         <h1 className="profile__title">Привет, Василий!</h1>
         <div className="profile__field-wrapper">
           <span className="profile__field-title">Имя</span>
-          <span className="profile__field-subtitle">{props.userInfo.name}</span>
+          <span className="profile__field-subtitle">{ props.userInfo.name }</span>
         </div>
         <div className="profile__field-wrapper">
           <span className="profile__field-title">Емэйл</span>
-          <span className="profile__field-subtitle">{props.userInfo.email}</span>
+          <span className="profile__field-subtitle">{ props.userInfo.email }</span>
         </div>
         <div className="profile__button-wrapper">
           <a className="profile__link-register" onClick={ () => setEdited(true) }>Редактировать</a>

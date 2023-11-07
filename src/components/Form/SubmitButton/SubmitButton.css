@@ -22,6 +22,10 @@
   transition: background-color .5s ease-out;
 }
 
+.submit-button:disabled {
+  background-color: #2F2F2F;
+}
+
 .form_edit-profile .submit-button {
   width: 410px;
   margin-top: 20px;

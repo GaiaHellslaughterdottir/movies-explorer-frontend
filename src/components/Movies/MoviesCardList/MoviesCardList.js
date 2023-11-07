@@ -1,6 +1,5 @@
 import React from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import Preloader from "../Preloder/Preloader";
 
 export default function MoviesCardList(props) {
   return (
