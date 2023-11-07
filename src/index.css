@@ -22,8 +22,8 @@
 @import "components/Movies/SearchForm/SearchForm.css";
 @import "components/Movies/FilterCheckbox/FilterCheckbox.css";
 @import "components/Movies/MoviesCardList/MoviesCardList.css";
-@import "components/Movies/Preloader/Preloader.css";
 @import "components/Navigation/Navigation.css";
+@import "components/Movies/Preloder/Preloader.css";
 
 body {
   background-color: #202020;

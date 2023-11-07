@@ -17,7 +17,7 @@ import { mainApi } from "../../utils/MainApi";
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(true);
   const [userInfo, setUserInfo] = React.useState({});
   const [currentUser, setCurrentUser] = React.useState({});
   const [movies, setMovies] = React.useState([]);
