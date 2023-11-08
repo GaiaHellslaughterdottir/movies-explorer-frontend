@@ -24,10 +24,6 @@ class MoviesApi {
   }
 
   _request(url, options) {
-    const token = localStorage.getItem('token');
-    if (token !== null) {
-      options.headers.authorization = `Bearer ${token}`;
-    }
     return fetch(url, options).then(this._checkResponse)
   }
 

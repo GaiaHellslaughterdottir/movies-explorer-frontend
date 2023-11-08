@@ -20,7 +20,6 @@ function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [userInfo, setUserInfo] = React.useState({});
   const [currentUser, setCurrentUser] = React.useState({});
-  const [movies, setMovies] = React.useState([]);
 
   const navigate = useNavigate();
 
@@ -31,21 +30,6 @@ function App() {
       getAuthUserInfo(token);
     }
   }, []);
-
-  React.useEffect(() => {
-    if(loggedIn) {
-      moviesApi.getMovieList()
-        .then((movieList) => {
-          if (movieList.length > 0) {
-            setMovies(movieList);
-          }
-          navigate(window.location.pathname, {replace: true});
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
-  }, [userInfo]);
 
   function handleLogin({email, password, isAfterRegister = false}) {
     auth.postSignIn({email: email, password: password})
@@ -103,7 +87,7 @@ function App() {
       <Route path="/" element={ <MainPage loggedIn={ loggedIn }/> }/>
       <Route path="/movies"
              element={ loggedIn ?
-               <ProtectedRouteElement element={ MoviesPage } movies={ movies } currentUser={currentUser}
+               <ProtectedRouteElement element={ MoviesPage } currentUser={currentUser}
                                       loggedIn={ loggedIn }/> : <Navigate to="/movies" replace/> }/>
       <Route path="/saved-movies"
              element={ loggedIn ?

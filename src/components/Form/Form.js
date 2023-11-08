@@ -12,7 +12,8 @@ export default function Form(props) {
       </div>
       <div className="form__footer-wrapper">
         { props.errorText && <span className="form__error">{ props.errorText }</span> }
-        <SubmitButton submitButtonDisabled={ props.submitButtonDisabled } buttonTitle={ props.buttonTitle }/>
+        <SubmitButton submitButtonDisabled={ props.submitButtonDisabled }
+                      buttonTitle={ props.buttonTitle }/>
         { props.footerElement }
       </div>
     </form>
