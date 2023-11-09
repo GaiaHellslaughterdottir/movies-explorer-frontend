@@ -24,6 +24,8 @@ function App() {
   const navigate = useNavigate();
 
   React.useEffect(() => {
+
+
     const token = localStorage.getItem('token');
     if (token !== null && !loggedIn) {
       setLoggedIn(true);
@@ -67,6 +69,8 @@ function App() {
 
   function handleSignOut() {
     localStorage.removeItem('token');
+    localStorage.removeItem('shortMovie');
+    localStorage.removeItem('searchText');
     setLoggedIn(false);
     navigate('/', { replace: true });
   }

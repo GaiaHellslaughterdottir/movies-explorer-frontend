@@ -7,7 +7,7 @@ export default function MoviesCardList(props) {
 
       { props.movies !== null && props.movies.length > 0 && <div className="movies-card-list__container">
         { props.movies.map((movie) => (
-          <MoviesCard key={ movie.id } movie={ movie }/>
+          <MoviesCard key={ movie.id } movie={ movie } onChangeMovie={props.onChangeMovie}/>
         )) }
       </div> }
 

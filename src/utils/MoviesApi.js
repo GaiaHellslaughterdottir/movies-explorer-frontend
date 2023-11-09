@@ -11,6 +11,9 @@ class MoviesApi {
       method: 'GET',
     })
       .then((res) => {
+
+
+
         return res;
       });
   }

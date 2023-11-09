@@ -15,7 +15,7 @@ class MainApi {
       });
   }
 
-  patchUserProfileInfo({name, email}) {
+  patchUserProfileInfo({ name, email }) {
     return this._request(this._baseUrl + '/users/me', {
       headers: this._headers,
       method: 'PATCH',
@@ -29,13 +29,23 @@ class MainApi {
       });
   }
 
-  postSavedMovie({name, link}) {
-    return this._request(this._baseUrl + '/cards', {
+  postSavedMovie({ country, director, duration, year, description, image, trailerLink, thumbnail, movieId, nameRU, nameEN, sourceID }) {
+    return this._request(this._baseUrl + '/movies', {
       headers: this._headers,
       method: 'POST',
       body: JSON.stringify({
-        name: name,
-        link: link
+        country: country,
+        director: director,
+        duration: duration,
+        year: year,
+        description: description,
+        image: image,
+        trailerLink: trailerLink,
+        thumbnail: thumbnail,
+        movieId: movieId,
+        nameRU: nameRU,
+        nameEN: nameEN,
+        sourceID: sourceID,
       })
     })
       .then((res) => {
@@ -44,34 +54,34 @@ class MainApi {
   }
 
   deleteSavedMovie(_id) {
-    return this._request(this._baseUrl + '/cards/' + _id, {
+    return this._request(this._baseUrl + '/movies/' + _id, {
       headers: this._headers,
       method: 'DELETE'
     });
   }
 
   getSavedMovieList() {
-    return this._request(this._baseUrl + '/cards', {
+    return this._request(this._baseUrl + '/movies', {
       headers: this._headers,
       method: 'GET',
     })
       .then((res) => {
-      return res;
-    });
+        return res;
+      });
   }
 
   _checkResponse(res) {
     if (res.ok) {
       return res.json();
     } else {
-      return Promise.reject(`Ошибка выполнения запроса: ${res.status}`);
+      return Promise.reject(`Ошибка выполнения запроса: ${ res.status }`);
     }
   }
 
   _request(url, options) {
     const token = localStorage.getItem('token');
     if (token !== null) {
-      options.headers.authorization = `Bearer ${token}`;
+      options.headers.authorization = `Bearer ${ token }`;
     }
     return fetch(url, options).then(this._checkResponse)
   }
@@ -80,5 +90,5 @@ class MainApi {
 
 export const mainApi = new MainApi({
   baseUrl: 'http://localhost:3000',
-  headers: {'Content-Type': 'application/json'}
+  headers: { 'Content-Type': 'application/json' }
 });

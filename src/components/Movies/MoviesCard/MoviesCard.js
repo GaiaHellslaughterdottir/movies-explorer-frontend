@@ -1,11 +1,39 @@
 import React from "react";
-
+import { mainApi } from "../../../utils/MainApi";
 
 export default function MoviesCard(props) {
-  const [saved, setSaved] = React.useState(false);
-
-  function toggleSavedHandler() {
-    setSaved(!saved);
+  function handleSaveMovie() {
+    if (props.movie._id !== undefined) {
+      mainApi.deleteSavedMovie(props.movie._id)
+        .then((movie) => {
+          delete props.movie._id;
+          props.onChangeMovie(props.movie);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    } else {
+      mainApi.postSavedMovie({country: props.movie.country,
+        director: props.movie.director,
+        duration: props.movie.duration,
+        year: props.movie.year,
+        description: props.movie.description,
+        image: 'https://api.nomoreparties.co' + props.movie.image.url,
+        trailerLink: props.movie.trailerLink,
+        thumbnail: 'https://api.nomoreparties.co' + props.movie.image.url,
+        movieId: props.movie.id,
+        nameRU: props.movie.nameRU,
+        nameEN: props.movie.nameEN,
+      })
+        .then((movie) => {
+          props.movie._id = movie._id;
+          props.onChangeMovie(props.movie);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+      ;
+    }
   }
 
   function formatDuration(duration) {
@@ -27,9 +55,9 @@ export default function MoviesCard(props) {
       <img className="movies-card__cover"
            src={`https://api.nomoreparties.co${props.movie.image.url}`}
            alt={props.movie.image.name}/>
-      <button className={`movies-card__save-button ${saved ? "movies-card__save-button_saved" : ""}`}
+      <button className={`movies-card__save-button ${props.movie._id  ? "movies-card__save-button_saved" : ""}`}
               type="button"
-              onClick={toggleSavedHandler}>Сохранить</button>
+              onClick={handleSaveMovie}>Сохранить</button>
     </article>
   );
 }

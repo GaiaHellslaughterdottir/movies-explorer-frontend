@@ -3,22 +3,29 @@ import SearchForm from "./SearchForm/SearchForm";
 import MoviesCardList from "./MoviesCardList/MoviesCardList";
 import { moviesApi } from "../../utils/MoviesApi";
 import Preloader from "./Preloder/Preloader";
+import { mainApi } from "../../utils/MainApi";
 
 export default function Movies(props) {
   const [search, setSearch] = React.useState('');
   const [inSearch, setInSearch] = React.useState(false);
   const [searchError, setSearchError] = React.useState(null);
   const [movies, setMovies] = React.useState([]);
+  const [savedMovies, setSavedMovies] = React.useState([]);
   const [searchedMovies, setSearchedMovies] = React.useState(null);
   const [shortMovie, setShortMovie] = React.useState(false);
 
-
   React.useEffect(() => {
-    setShortMovie(localStorage.getItem('shortMovie') === 'true');
-    const searchText = localStorage.getItem('searchText');
-    setSearch(searchText !== null ? searchText : '');
+    mainApi.getSavedMovieList()
+      .then((movieList) => {
+        setSavedMovies(movieList);
+        setShortMovie(localStorage.getItem('shortMovie') === 'true');
+        const searchText = localStorage.getItem('searchText');
+        setSearch(searchText !== null ? searchText : '');
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }, []);
-
 
   React.useEffect(() => {
     if (search !== '') {
@@ -49,6 +56,10 @@ export default function Movies(props) {
     }
   }
 
+  function handleChangeMovie(movie) {
+    setSearchedMovies([...searchedMovies]);
+  }
+
   function handlerShortMovieChange(state) {
     setShortMovie(state);
     localStorage.setItem('shortMovie', state);
@@ -67,15 +78,25 @@ export default function Movies(props) {
      return (movie.nameRU.toLowerCase().includes(search.toLowerCase()) ||
        movie.nameEN.toLowerCase().includes(search.toLowerCase()));
     });
+    matchMovies(result);
     setSearchedMovies(result);
     setInSearch(false);
+  }
+
+  function matchMovies(movieList) {
+    movieList.map((movie) => {
+      const matchMovie = savedMovies.find(obj => obj.movieId === movie.id);
+      if(matchMovie !== undefined) {
+        movie._id = matchMovie._id;
+      }
+    });
   }
 
   return (
     <section className="movies">
       <SearchForm shortMovie={shortMovie} onSearch={ handlerSearchChange } search={ search } onChangeShortMovie={handlerShortMovieChange}/>
       <hr className="page__line"/>
-      <MoviesCardList movies={ searchedMovies } searchError={ searchError }/>
+      <MoviesCardList movies={ searchedMovies } searchError={ searchError } onChangeMovie={handleChangeMovie}/>
       <Preloader className={ inSearch ? 'preloader_visible' : '' }/>
       <button className="show-more" type="button">Ещё</button>
     </section>
