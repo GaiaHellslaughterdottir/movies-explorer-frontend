@@ -2,7 +2,6 @@ import React from "react";
 import SearchForm from "../Movies/SearchForm/SearchForm";
 import MoviesCardList from "../Movies/MoviesCardList/MoviesCardList";
 import { mainApi } from "../../utils/MainApi";
-import { moviesApi } from "../../utils/MoviesApi";
 
 export default function SavedMovies() {
   const [search, setSearch] = React.useState('');
@@ -14,9 +13,7 @@ export default function SavedMovies() {
     mainApi.getSavedMovieList()
       .then((movieList) => {
         setSavedMovies(movieList);
-        setShortMovie(localStorage.getItem('shortMovie') === 'true');
-        const searchText = localStorage.getItem('searchText');
-        setSearch(searchText !== null ? searchText : '');
+        searchByName(movieList);
       })
       .catch((err) => {
         console.log(err);
@@ -24,27 +21,11 @@ export default function SavedMovies() {
   }, []);
 
   React.useEffect(() => {
-    if (search !== '') {
-      searchMovie();
-    }
+    searchMovie();
   }, [search, shortMovie]);
 
   function searchMovie() {
-    setSearchedMovies(null);
-    if (savedMovies.length === 0) {
-      mainApi.getMovieList()
-        .then((movieList) => {
-          if (movieList.length > 0) {
-            setSavedMovies(movieList);
-            searchByName(movieList);
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    } else {
-      searchByName(savedMovies);
-    }
+    searchByName(savedMovies);
   }
 
   function handleChangeMovie(movie) {
@@ -53,30 +34,28 @@ export default function SavedMovies() {
 
   function handlerShortMovieChange(state) {
     setShortMovie(state);
-    localStorage.setItem('shortMovie', state);
   }
 
-  function handlerSearchChange({searchText}) {
+  function handlerSearchChange({ searchText }) {
     setSearch(searchText);
-    localStorage.setItem('searchText', searchText);
   }
 
   function searchByName(moviesList) {
-    const result = moviesList.filter(movie => {
+    setSearchedMovies(moviesList.filter(movie => {
       if (shortMovie && movie.duration > 40) {
         return false;
       }
-      return (movie.nameRU.toLowerCase().includes(search.toLowerCase()) ||
+      return search === '' ? true : (movie.nameRU.toLowerCase().includes(search.toLowerCase()) ||
         movie.nameEN.toLowerCase().includes(search.toLowerCase()));
-    });
-    setSearchedMovies(result);
+    }));
   }
 
   return (
     <section className="saved-movies">
-      <SearchForm shortMovie={shortMovie} onSearch={ handlerSearchChange } search={ search } onChangeShortMovie={handlerShortMovieChange}/>
+      <SearchForm shortMovie={ shortMovie } onSearch={ handlerSearchChange } search={ search }
+                  onChangeShortMovie={ handlerShortMovieChange }/>
       <hr className="page__line"/>
-      <MoviesCardList movies={ searchedMovies } onChangeMovie={handleChangeMovie}/>
+      <MoviesCardList movies={ searchedMovies } onChangeMovie={ handleChangeMovie } message={!searchedMovies || searchedMovies.length === 0 ? 'У вас еще нет избранных фильмов' : null}/>
     </section>
   );
 }

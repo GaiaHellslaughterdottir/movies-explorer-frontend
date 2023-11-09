@@ -11,10 +11,24 @@ class MoviesApi {
       method: 'GET',
     })
       .then((res) => {
-
-
-
-        return res;
+        const result = [];
+        res.map((movie) => {
+          result.push({
+            country: movie.country,
+            director: movie.director,
+            duration: movie.duration,
+            year: movie.year,
+            description: movie.description,
+            image: 'https://api.nomoreparties.co' + movie.image.url,
+            trailerLink: movie.trailerLink,
+            thumbnail: 'https://api.nomoreparties.co' + movie.image.url,
+            movieId: movie.id,
+            nameRU: movie.nameRU,
+            nameEN: movie.nameEN,
+            sourceID: movie.sourceID,
+          })
+        });
+        return result;
       });
   }
 
@@ -22,7 +36,7 @@ class MoviesApi {
     if (res.ok) {
       return res.json();
     } else {
-      return Promise.reject(`Ошибка выполнения запроса: ${res.status}`);
+      return Promise.reject(`Ошибка выполнения запроса: ${ res.status }`);
     }
   }
 
@@ -34,5 +48,5 @@ class MoviesApi {
 
 export const moviesApi = new MoviesApi({
   baseUrl: 'https://api.nomoreparties.co/beatfilm-movies',
-  headers: {'Content-Type': 'application/json'}
+  headers: { 'Content-Type': 'application/json' }
 });

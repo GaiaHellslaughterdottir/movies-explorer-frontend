@@ -85,7 +85,7 @@ export default function Movies(props) {
 
   function matchMovies(movieList) {
     movieList.map((movie) => {
-      const matchMovie = savedMovies.find(obj => obj.movieId === movie.id);
+      const matchMovie = savedMovies.find(obj => obj.movieId === movie.movieId);
       if(matchMovie !== undefined) {
         movie._id = matchMovie._id;
       }
@@ -96,7 +96,7 @@ export default function Movies(props) {
     <section className="movies">
       <SearchForm shortMovie={shortMovie} onSearch={ handlerSearchChange } search={ search } onChangeShortMovie={handlerShortMovieChange}/>
       <hr className="page__line"/>
-      <MoviesCardList movies={ searchedMovies } searchError={ searchError } onChangeMovie={handleChangeMovie}/>
+      <MoviesCardList movies={ searchedMovies } searchError={ searchError } onChangeMovie={handleChangeMovie} message={!searchedMovies || searchedMovies.length === 0 ? 'Ничего не найдено' : null}/>
       <Preloader className={ inSearch ? 'preloader_visible' : '' }/>
       <button className="show-more" type="button">Ещё</button>
     </section>
