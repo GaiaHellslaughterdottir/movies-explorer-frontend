@@ -24,6 +24,7 @@
 @import "components/Movies/MoviesCardList/MoviesCardList.css";
 @import "components/Navigation/Navigation.css";
 @import "components/Movies/Preloder/Preloader.css";
+@import "components/InfoTooltip/InfoTooltip.css";
 
 body {
   background-color: #202020;

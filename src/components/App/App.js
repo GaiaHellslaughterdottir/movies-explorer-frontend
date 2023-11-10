@@ -10,9 +10,11 @@ import SignInPage from "../../pages/SignInPage";
 import SignUpPage from "../../pages/SignUpPage";
 import PageNotFound from "../../pages/PageNotFound";
 
-import {auth} from "../../utils/AuthApi";
-import {moviesApi} from "../../utils/MoviesApi";
+import { auth } from "../../utils/AuthApi";
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { moviesApi } from "../../utils/MoviesApi";
 import { mainApi } from "../../utils/MainApi";
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 
 
 function App() {
@@ -20,6 +22,9 @@ function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [userInfo, setUserInfo] = React.useState({});
   const [currentUser, setCurrentUser] = React.useState({});
+  const [isToolTipOpen, setToolTipOpen] = React.useState(false);
+  const [isToolTipSuccess, setToolTipSuccess] = React.useState(false);
+  const [toolTipErrorMessage, setToolTipErrorMessage] = React.useState(null);
 
   const navigate = useNavigate();
 
@@ -33,9 +38,9 @@ function App() {
     }
   }, []);
 
-  function handleLogin({email, password, isAfterRegister = false}) {
-    auth.postSignIn({email: email, password: password})
-      .then(({token}) => {
+  function handleLogin({ email, password, isAfterRegister = false }) {
+    auth.postSignIn({ email: email, password: password })
+      .then(({ token }) => {
         localStorage.setItem('token', token);
         setLoggedIn(true);
         getAuthUserInfo(token);
@@ -43,13 +48,15 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+        setToolTipSuccess(false);
+        setToolTipOpen(true);
       });
   }
 
-  function handleRegister({name, email, password}) {
-    auth.postSignUp({name: name, email: email, password: password})
+  function handleRegister({ name, email, password }) {
+    auth.postSignUp({ name: name, email: email, password: password })
       .then(() => {
-        handleLogin({email: email, password: password, isAfterRegister: true});
+        handleLogin({ email: email, password: password, isAfterRegister: true });
       })
       .catch((err) => {
         console.log(err);
@@ -75,8 +82,8 @@ function App() {
     navigate('/', { replace: true });
   }
 
-  function handleEditProfile({name, email}) {
-    mainApi.patchUserProfileInfo({name: name, email: email})
+  function handleEditProfile({ name, email }) {
+    mainApi.patchUserProfileInfo({ name: name, email: email })
       .then((userInfo) => {
         setCurrentUser(userInfo);
       })
@@ -85,33 +92,41 @@ function App() {
       });
   }
 
+  function closeAllPopups() {
+    setToolTipOpen(false);
+  }
+
   return (
+    <CurrentUserContext.Provider value={ currentUser }>
 
-    <Routes>
-      <Route path="/" element={ <MainPage loggedIn={ loggedIn }/> }/>
-      <Route path="/movies"
-             element={ loggedIn ?
-               <ProtectedRouteElement element={ MoviesPage } currentUser={currentUser}
-                                      loggedIn={ loggedIn }/> : <Navigate to="/movies" replace/> }/>
-      <Route path="/saved-movies"
-             element={ loggedIn ?
-               <ProtectedRouteElement element={ SavedMoviesPage }
-                                      loggedIn={ loggedIn }/> : <Navigate to="/saved-movies" replace/> }/>
-      <Route path="/profile"
-             element={ loggedIn ?
-               <ProtectedRouteElement element={ ProfilePage }
-                                      onEditProfile={ handleEditProfile }
-                                      onSignOut={ handleSignOut }
-                                      userInfo={ userInfo }
-                                      loggedIn={ loggedIn }/> : <Navigate to="/profile" replace/> }/>
-      <Route path="signin" element={ <SignInPage onLogin={ handleLogin }/> }/>
+      <Routes>
+        <Route path="/" element={ <MainPage loggedIn={ loggedIn }/> }/>
+        <Route path="/movies"
+               element={ loggedIn ?
+                 <ProtectedRouteElement element={ MoviesPage } currentUser={ currentUser }
+                                        loggedIn={ loggedIn }/> : <Navigate to="/movies" replace/> }/>
+        <Route path="/saved-movies"
+               element={ loggedIn ?
+                 <ProtectedRouteElement element={ SavedMoviesPage }
+                                        loggedIn={ loggedIn }/> : <Navigate to="/saved-movies" replace/> }/>
+        <Route path="/profile"
+               element={ loggedIn ?
+                 <ProtectedRouteElement element={ ProfilePage }
+                                        onEditProfile={ handleEditProfile }
+                                        onSignOut={ handleSignOut }
+                                        userInfo={ userInfo }
+                                        loggedIn={ loggedIn }/> : <Navigate to="/profile" replace/> }/>
+        <Route path="signin" element={ <SignInPage onLogin={ handleLogin }/> }/>
 
-      <Route path="signup" element={ <SignUpPage onRegister={handleRegister}/> }/>
+        <Route path="signup" element={ <SignUpPage onRegister={ handleRegister }/> }/>
 
-      <Route path="*" element={ <PageNotFound/> }/>
+        <Route path="*" element={ <PageNotFound/> }/>
 
-    </Routes>
+      </Routes>
 
+      <InfoTooltip isOpen={isToolTipOpen} onClose={closeAllPopups} isSuccess={isToolTipSuccess}/>
+
+    </CurrentUserContext.Provider>
   );
 }
 
