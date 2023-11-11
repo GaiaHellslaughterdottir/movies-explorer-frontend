@@ -7,8 +7,6 @@ import FormField from "../Form/FormField/FormField";
 export default function Profile(props) {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm({ mode: 'all' });
 
-  const [edited, setEdited] = React.useState(false);
-
   function onSubmit(data) {
     props.onEditProfile({
       name: data.name,
@@ -27,12 +25,13 @@ export default function Profile(props) {
 
     <div className="profile">
 
-      { edited && <Form className="form_edit-profile"
+      { props.edited && <Form className="form_edit-profile"
                         onSubmit={ handleSubmit(onSubmit) }
+                        errorText={ props.errorText }
                         formTitle="Bonjour Nicolas!"
                         buttonTitle="Сохранить"
                         submitButtonDisabled={Object.keys(errors).length !== 0}
-                        errorText="При обновлении профиля произошла ошибка." name="login">
+                        name="login">
         <FormField fieldTitle="Имя" errorTitle={errors.name !== undefined ? 'Имя задано не корректно' : null}>
           <input
             placeholder="Name"
@@ -58,9 +57,9 @@ export default function Profile(props) {
         </FormField>
       </Form> }
 
-      { !edited &&
+      { !props.edited &&
       <div className="profile__wrapper">
-        <h1 className="profile__title">Привет, Василий!</h1>
+        <h1 className="profile__title">Привет, {props.userInfo.name}</h1>
         <div className="profile__field-wrapper">
           <span className="profile__field-title">Имя</span>
           <span className="profile__field-subtitle">{ props.userInfo.name }</span>
@@ -70,7 +69,7 @@ export default function Profile(props) {
           <span className="profile__field-subtitle">{ props.userInfo.email }</span>
         </div>
         <div className="profile__button-wrapper">
-          <a className="profile__link-register" onClick={ () => setEdited(true) }>Редактировать</a>
+          <a className="profile__link-register" onClick={ () => props.onActivateEditProfile() }>Редактировать</a>
           <a className="profile__link-out" onClick={ props.onSignOut }>Выйти из аккаунта</a>
         </div>
       </div>

@@ -5,7 +5,7 @@ export default function SignInPage(props) {
 
   return (
     <div className="page">
-      <Login onLogin={props.onLogin}/>
+      <Login onLogin={props.onLogin} errorText={ props.errorText }/>
     </div>
   );
 }

@@ -15,6 +15,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { moviesApi } from "../../utils/MoviesApi";
 import { mainApi } from "../../utils/MainApi";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
+import Popup from "../Popup/Popup";
 
 
 function App() {
@@ -24,13 +25,15 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   const [isToolTipOpen, setToolTipOpen] = React.useState(false);
   const [isToolTipSuccess, setToolTipSuccess] = React.useState(false);
-  const [toolTipErrorMessage, setToolTipErrorMessage] = React.useState(null);
+  const [loginErrorText, setLoginErrorText] = React.useState(null);
+  const [registerErrorText, setRegisterErrorText] = React.useState(null);
+  const [profileEditErrorText, setProfileEditErrorText] = React.useState(null);
+  const [profileEdited, setProfileEdited] = React.useState(false);
 
   const navigate = useNavigate();
 
   React.useEffect(() => {
-
-
+    setLoginErrorText(null);
     const token = localStorage.getItem('token');
     if (token !== null && !loggedIn) {
       setLoggedIn(true);
@@ -41,6 +44,7 @@ function App() {
   function handleLogin({ email, password, isAfterRegister = false }) {
     auth.postSignIn({ email: email, password: password })
       .then(({ token }) => {
+        setLoginErrorText(null);
         localStorage.setItem('token', token);
         setLoggedIn(true);
         getAuthUserInfo(token);
@@ -48,8 +52,15 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        setToolTipSuccess(false);
-        setToolTipOpen(true);
+        let message = 'Ошибка авторизации';
+        if (err === 401) {
+          message = 'Вы ввели неправильный логин или пароль.';
+        } else if (err === 500) {
+          message = 'При авторизации произошла ошибка. Токен не передан или передан не в том формате.';
+        } else if (err === 400) {
+          message = 'При авторизации произошла ошибка. Переданный токен некорректен.';
+        }
+        setLoginErrorText(message);
       });
   }
 
@@ -60,6 +71,13 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+        let message = 'Ошибка регистрации';
+        if (err === 409) {
+          message = 'Пользователь с таким email уже существует.';
+        } else if (err === 500) {
+          message = 'При регистрации пользователя произошла ошибка.';
+        }
+        setRegisterErrorText(message);
       });
   }
 
@@ -85,11 +103,24 @@ function App() {
   function handleEditProfile({ name, email }) {
     mainApi.patchUserProfileInfo({ name: name, email: email })
       .then((userInfo) => {
+        setUserInfo(userInfo);
         setCurrentUser(userInfo);
+        setProfileEdited(false);
       })
       .catch((err) => {
         console.log(err);
+        let message = 'Ошибка редактирования профиля';
+        if (err === 409) {
+          message = 'Пользователь с таким email уже существует.';
+        } else if (err === 500) {
+          message = 'При обновлении профиля произошла ошибка.';
+        }
+        setProfileEditErrorText(message);
       });
+  }
+
+  function handleActivateEditProfile() {
+    setProfileEdited(true);
   }
 
   function closeAllPopups() {
@@ -112,20 +143,23 @@ function App() {
         <Route path="/profile"
                element={ loggedIn ?
                  <ProtectedRouteElement element={ ProfilePage }
+                                        onActivateEditProfile={handleActivateEditProfile}
+                                        edited = {profileEdited}
                                         onEditProfile={ handleEditProfile }
                                         onSignOut={ handleSignOut }
+                                        errorText={ profileEditErrorText }
                                         userInfo={ userInfo }
                                         loggedIn={ loggedIn }/> : <Navigate to="/profile" replace/> }/>
-        <Route path="signin" element={ <SignInPage onLogin={ handleLogin }/> }/>
+        <Route path="signin" element={ <SignInPage onLogin={ handleLogin } errorText={ loginErrorText }/> }/>
 
-        <Route path="signup" element={ <SignUpPage onRegister={ handleRegister }/> }/>
+        <Route path="signup" element={ <SignUpPage onRegister={ handleRegister } errorText={ registerErrorText }/> }/>
 
         <Route path="*" element={ <PageNotFound/> }/>
 
       </Routes>
-
-      <InfoTooltip isOpen={isToolTipOpen} onClose={closeAllPopups} isSuccess={isToolTipSuccess}/>
-
+      <Popup name="info-tooltip" isOpen={ isToolTipOpen } onClose={ closeAllPopups }>
+        <InfoTooltip  isSuccess={ isToolTipSuccess } message={ loginErrorText }/>
+      </Popup>
     </CurrentUserContext.Provider>
   );
 }

@@ -28,8 +28,9 @@ export default function Register(props) {
             buttonTitle="Зарегистрироваться"
             submitButtonDisabled={Object.keys(errors).length !== 0}
             name="register"
+            errorText={ props.errorText }
             footerElement={ <p className="form__login-footer">
-              Уже зарегистрированы? { <Link to="/signin" className="form__login-footer-link">Войти</Link> }</p> }>
+              Уже зарегистрированы? { <Link to="/signin" className="form__login-footer-link" >Войти</Link> }</p> }>
 
         <FormField fieldTitle="Имя" errorTitle={ errors.name !== undefined ? 'Имя задано не корректно' : null }>
           <input placeholder="Имя"

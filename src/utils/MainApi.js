@@ -74,7 +74,7 @@ class MainApi {
     if (res.ok) {
       return res.json();
     } else {
-      return Promise.reject(`Ошибка выполнения запроса: ${ res.status }`);
+      return Promise.reject(res.status);
     }
   }
 

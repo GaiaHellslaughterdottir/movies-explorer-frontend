@@ -28,9 +28,10 @@ export default function Login(props) {
             buttonTitle="Войти"
             submitButtonDisabled={Object.keys(errors).length !== 0}
             name="login"
+            errorText={ props.errorText }
             footerElement={ <p className="form__login-footer">
               Ещё не зарегистрированы? { <Link to="/signup"
-                                               className="form__login-footer-link">Регистрация</Link> }</p> }>
+                                               className="form__login-footer-link" >Регистрация</Link> }</p> }>
 
         <FormField fieldTitle="E-mail" errorTitle={errors.email !== undefined ? 'Емэйл задан не корректно' : null}>
           <input placeholder="E-mail"
