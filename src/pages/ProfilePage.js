@@ -1,8 +1,6 @@
 import React from "react";
 import Header from "../components/Header/Header";
 import Profile from "../components/Profile/Profile";
-import SignUpPage from "./SignUpPage";
-import ProtectedRouteElement from "../components/ProtectedRoute";
 
 export default function ProfilePage(props) {
 

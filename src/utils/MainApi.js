@@ -1,23 +1,13 @@
 class MainApi {
 
   constructor(options) {
-    this._baseUrl = options.baseUrl;
-    this._headers = options.headers;
-  }
-
-  getUserProfileInfo() {
-    return this._request(this._baseUrl + '/users/me', {
-      headers: this._headers,
-      method: 'GET',
-    })
-      .then((res) => {
-        return res;
-      });
+    this.baseUrl = options.baseUrl;
+    this.headers = options.headers;
   }
 
   patchUserProfileInfo({ name, email }) {
-    return this._request(this._baseUrl + '/users/me', {
-      headers: this._headers,
+    return this.request(this.baseUrl + '/users/me', {
+      headers: this.headers,
       method: 'PATCH',
       body: JSON.stringify({
         name: name,
@@ -30,8 +20,8 @@ class MainApi {
   }
 
   postSavedMovie({ country, director, duration, year, description, image, trailerLink, thumbnail, movieId, nameRU, nameEN, sourceID }) {
-    return this._request(this._baseUrl + '/movies', {
-      headers: this._headers,
+    return this.request(this.baseUrl + '/movies', {
+      headers: this.headers,
       method: 'POST',
       body: JSON.stringify({
         country: country,
@@ -54,15 +44,15 @@ class MainApi {
   }
 
   deleteSavedMovie(_id) {
-    return this._request(this._baseUrl + '/movies/' + _id, {
-      headers: this._headers,
+    return this.request(this.baseUrl + '/movies/' + _id, {
+      headers: this.headers,
       method: 'DELETE'
     });
   }
 
   getSavedMovieList() {
-    return this._request(this._baseUrl + '/movies', {
-      headers: this._headers,
+    return this.request(this.baseUrl + '/movies', {
+      headers: this.headers,
       method: 'GET',
     })
       .then((res) => {
@@ -70,7 +60,7 @@ class MainApi {
       });
   }
 
-  _checkResponse(res) {
+  checkResponse(res) {
     if (res.ok) {
       return res.json();
     } else {
@@ -78,12 +68,12 @@ class MainApi {
     }
   }
 
-  _request(url, options) {
+  request(url, options) {
     const token = localStorage.getItem('token');
     if (token !== null) {
       options.headers.authorization = `Bearer ${ token }`;
     }
-    return fetch(url, options).then(this._checkResponse)
+    return fetch(url, options).then(this.checkResponse)
   }
 
 }

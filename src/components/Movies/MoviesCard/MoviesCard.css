@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-decoration: none;
   -webkit-transition: background-color .5s ease-out;
   -moz-transition: background-color .5s ease-out;
   -o-transition: background-color .5s ease-out;
@@ -79,6 +80,16 @@
   background-color: #EE3465;
   color: rgba(255, 255, 255, 0);
   background-image: url("../../../images/movies-card_save-button-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-transition: background-color .5s ease-out;
+  -moz-transition: background-color .5s ease-out;
+  -o-transition: background-color .5s ease-out;
+  transition: background-color .5s ease-out;
+}
+
+.movies-card__save-button_delete {
+  background-image: url("../../../images/delete_saved_movie.svg");
   background-repeat: no-repeat;
   background-position: center;
   -webkit-transition: background-color .5s ease-out;

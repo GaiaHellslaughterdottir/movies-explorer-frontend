@@ -28,7 +28,7 @@ export default function Profile(props) {
       { props.edited && <Form className="form_edit-profile"
                         onSubmit={ handleSubmit(onSubmit) }
                         errorText={ props.errorText }
-                        formTitle="Bonjour Nicolas!"
+                        formTitle={`Привет, ${props.userInfo.name}`}
                         buttonTitle="Сохранить"
                         submitButtonDisabled={Object.keys(errors).length !== 0}
                         name="login">

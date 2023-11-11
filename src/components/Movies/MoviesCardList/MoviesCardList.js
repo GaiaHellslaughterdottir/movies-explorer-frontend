@@ -4,10 +4,9 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 export default function MoviesCardList(props) {
   return (
     <section className="movies-card-list">
-
       { props.movies !== null && props.movies.length > 0 && <div className="movies-card-list__container">
-        { props.movies.map((movie) => (
-          <MoviesCard key={ movie.movieId } movie={ movie } onChangeMovie={props.onChangeMovie}/>
+        { props.movies && props.movies.length > 0 && props.movies.slice(0, props.visibleMoviesNumber).map((movie) => (
+          <MoviesCard key={ movie.movieId } movie={ movie } onChangeMovie={props.onChangeMovie} savedPage={props.savedPage}/>
         )) }
       </div> }
 

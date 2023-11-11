@@ -31,7 +31,7 @@ export default function SearchForm(props) {
                  type="text"
                  className="form__field"
                  id="form__field-search"
-                 { ...register('search', { required: true, maxLength: 30, minLength: 2 }) }
+                 { ...register('search', { required: true, maxLength: 30, minLength: 1 }) }
           />
         </FormField>
 

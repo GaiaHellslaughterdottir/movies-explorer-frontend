@@ -29,7 +29,8 @@ export default function SavedMovies() {
   }
 
   function handleChangeMovie(movie) {
-    setSearchedMovies([...searchedMovies]);
+    setSearchedMovies((state) => state.filter((c) => c._id !== movie._id));
+    setSavedMovies((state) => state.filter((c) => c.movieId !== movie.movieId));
   }
 
   function handlerShortMovieChange(state) {
@@ -55,7 +56,10 @@ export default function SavedMovies() {
       <SearchForm shortMovie={ shortMovie } onSearch={ handlerSearchChange } search={ search }
                   onChangeShortMovie={ handlerShortMovieChange }/>
       <hr className="page__line"/>
-      <MoviesCardList movies={ searchedMovies } onChangeMovie={ handleChangeMovie } message={!searchedMovies || searchedMovies.length === 0 ? 'У вас еще нет избранных фильмов' : null}/>
+      <MoviesCardList movies={ searchedMovies }
+                      onChangeMovie={ handleChangeMovie }
+                      savedPage={true}
+                      message={!searchedMovies || searchedMovies.length === 0 ? 'У вас еще нет избранных фильмов' : null}/>
     </section>
   );
 }

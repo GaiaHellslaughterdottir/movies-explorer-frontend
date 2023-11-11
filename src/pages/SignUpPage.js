@@ -1,6 +1,5 @@
 import React from "react";
 import Register from "../components/Register/Register";
-import SignInPage from "./SignInPage";
 
 export default function SignUpPage(props) {
 

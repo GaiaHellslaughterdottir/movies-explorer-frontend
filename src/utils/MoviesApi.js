@@ -1,13 +1,13 @@
 class MoviesApi {
 
   constructor(options) {
-    this._baseUrl = options.baseUrl;
-    this._headers = options.headers;
+    this.baseUrl = options.baseUrl;
+    this.headers = options.headers;
   }
 
   getMovieList() {
-    return this._request(this._baseUrl + '/', {
-      headers: this._headers,
+    return this.request(this.baseUrl + '/', {
+      headers: this.headers,
       method: 'GET',
     })
       .then((res) => {
@@ -32,7 +32,7 @@ class MoviesApi {
       });
   }
 
-  _checkResponse(res) {
+  checkResponse(res) {
     if (res.ok) {
       return res.json();
     } else {
@@ -40,10 +40,9 @@ class MoviesApi {
     }
   }
 
-  _request(url, options) {
-    return fetch(url, options).then(this._checkResponse)
+  request(url, options) {
+    return fetch(url, options).then(this.checkResponse)
   }
-
 }
 
 export const moviesApi = new MoviesApi({

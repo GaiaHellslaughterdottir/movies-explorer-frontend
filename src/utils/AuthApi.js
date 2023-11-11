@@ -1,11 +1,11 @@
 export default class AuthApi {
 
   constructor(options) {
-    this._baseUrl = options.baseUrl;
+    this.baseUrl = options.baseUrl;
   }
 
   postSignUp({name, email, password}) {
-    return this._request(this._baseUrl + '/signup', {
+    return this.request(this.baseUrl + '/signup', {
       headers: {'Content-Type': 'application/json'},
       method: 'POST',
       body: JSON.stringify({
@@ -20,7 +20,7 @@ export default class AuthApi {
   }
 
   postSignIn({email, password}) {
-    return this._request(this._baseUrl + '/signin', {
+    return this.request(this.baseUrl + '/signin', {
       headers: {'Content-Type': 'application/json'},
       method: 'POST',
       body: JSON.stringify({
@@ -34,7 +34,7 @@ export default class AuthApi {
   }
 
   getUserInfo(token) {
-    return this._request(this._baseUrl + '/users/me', {
+    return this.request(this.baseUrl + '/users/me', {
       headers: {
         "Content-Type": "application/json",
         "Authorization" : `Bearer ${token}`
@@ -46,7 +46,7 @@ export default class AuthApi {
       });
   }
 
-  _checkResponse(res) {
+  checkResponse(res) {
     if (res.ok) {
       return res.json();
     } else {
@@ -54,8 +54,8 @@ export default class AuthApi {
     }
   }
 
-  _request(url, options) {
-    return fetch(url, options).then(this._checkResponse)
+  request(url, options) {
+    return fetch(url, options).then(this.checkResponse)
   }
 }
 

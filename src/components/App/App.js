@@ -12,11 +12,10 @@ import PageNotFound from "../../pages/PageNotFound";
 
 import { auth } from "../../utils/AuthApi";
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { moviesApi } from "../../utils/MoviesApi";
 import { mainApi } from "../../utils/MainApi";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import Popup from "../Popup/Popup";
-
+import { messages, http_codes } from '../../utils/constants';
 
 function App() {
 
@@ -28,6 +27,7 @@ function App() {
   const [loginErrorText, setLoginErrorText] = React.useState(null);
   const [registerErrorText, setRegisterErrorText] = React.useState(null);
   const [profileEditErrorText, setProfileEditErrorText] = React.useState(null);
+  const [infoMessage, setInfoMessage] = React.useState(null);
   const [profileEdited, setProfileEdited] = React.useState(false);
 
   const navigate = useNavigate();
@@ -41,24 +41,24 @@ function App() {
     }
   }, []);
 
-  function handleLogin({ email, password, isAfterRegister = false }) {
+  function handleLogin({ email, password}) {
     auth.postSignIn({ email: email, password: password })
       .then(({ token }) => {
         setLoginErrorText(null);
         localStorage.setItem('token', token);
         setLoggedIn(true);
         getAuthUserInfo(token);
-        window.location.replace(isAfterRegister ? '/movies' : '/')
+        navigate('/movies', { replace: true });
       })
       .catch((err) => {
         console.log(err);
-        let message = 'Ошибка авторизации';
-        if (err === 401) {
-          message = 'Вы ввели неправильный логин или пароль.';
-        } else if (err === 500) {
-          message = 'При авторизации произошла ошибка. Токен не передан или передан не в том формате.';
-        } else if (err === 400) {
-          message = 'При авторизации произошла ошибка. Переданный токен некорректен.';
+        let message = messages.authorizationErrorDefault;
+        if (err === http_codes.UNAUTHORIZED) {
+          message = messages.incorrectLoginOrPasswordError;
+        } else if (err === http_codes.INTERNAL_SERVER_ERROR) {
+          message = messages.authorizationError;
+        } else if (err === http_codes.BAD_REQUEST) {
+          message = messages.badTokenError;
         }
         setLoginErrorText(message);
       });
@@ -71,11 +71,11 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        let message = 'Ошибка регистрации';
-        if (err === 409) {
-          message = 'Пользователь с таким email уже существует.';
-        } else if (err === 500) {
-          message = 'При регистрации пользователя произошла ошибка.';
+        let message = messages.registrationErrorDefault;
+        if (err === http_codes.CONFLICT) {
+          message = messages.duplicateEmailError;
+        } else if (err === http_codes.INTERNAL_SERVER_ERROR) {
+          message = messages.registrationError;
         }
         setRegisterErrorText(message);
       });
@@ -106,14 +106,17 @@ function App() {
         setUserInfo(userInfo);
         setCurrentUser(userInfo);
         setProfileEdited(false);
+        setToolTipOpen(true);
+        setToolTipSuccess(true);
+        setInfoMessage(messages.profileSaveSuccess);
       })
       .catch((err) => {
         console.log(err);
-        let message = 'Ошибка редактирования профиля';
-        if (err === 409) {
-          message = 'Пользователь с таким email уже существует.';
-        } else if (err === 500) {
-          message = 'При обновлении профиля произошла ошибка.';
+        let message = messages.profileEditErrorDefault;
+        if (err === http_codes.CONFLICT) {
+          message = messages.duplicateEmailError;
+        } else if (err === http_codes.INTERNAL_SERVER_ERROR) {
+          message = messages.profileEditError;
         }
         setProfileEditErrorText(message);
       });
@@ -135,11 +138,11 @@ function App() {
         <Route path="/movies"
                element={ loggedIn ?
                  <ProtectedRouteElement element={ MoviesPage } currentUser={ currentUser }
-                                        loggedIn={ loggedIn }/> : <Navigate to="/movies" replace/> }/>
+                                        loggedIn={ loggedIn }/> : <Navigate to="/" replace/> }/>
         <Route path="/saved-movies"
                element={ loggedIn ?
                  <ProtectedRouteElement element={ SavedMoviesPage }
-                                        loggedIn={ loggedIn }/> : <Navigate to="/saved-movies" replace/> }/>
+                                        loggedIn={ loggedIn }/> : <Navigate to="/" replace/> }/>
         <Route path="/profile"
                element={ loggedIn ?
                  <ProtectedRouteElement element={ ProfilePage }
@@ -149,7 +152,7 @@ function App() {
                                         onSignOut={ handleSignOut }
                                         errorText={ profileEditErrorText }
                                         userInfo={ userInfo }
-                                        loggedIn={ loggedIn }/> : <Navigate to="/profile" replace/> }/>
+                                        loggedIn={ loggedIn }/> : <Navigate to="/" replace/> }/>
         <Route path="signin" element={ <SignInPage onLogin={ handleLogin } errorText={ loginErrorText }/> }/>
 
         <Route path="signup" element={ <SignUpPage onRegister={ handleRegister } errorText={ registerErrorText }/> }/>
@@ -158,7 +161,7 @@ function App() {
 
       </Routes>
       <Popup name="info-tooltip" isOpen={ isToolTipOpen } onClose={ closeAllPopups }>
-        <InfoTooltip  isSuccess={ isToolTipSuccess } message={ loginErrorText }/>
+        <InfoTooltip  isSuccess={ isToolTipSuccess } message={ infoMessage }/>
       </Popup>
     </CurrentUserContext.Provider>
   );
