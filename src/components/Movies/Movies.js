@@ -11,7 +11,7 @@ export default function Movies() {
   const [inSearch, setInSearch] = React.useState(false);
   const [searchError, setSearchError] = React.useState(null);
   const [movies, setMovies] = React.useState(null);
-  const [savedMovies, setSavedMovies] = React.useState([]);
+  const [savedMovies, setSavedMovies] = React.useState(null);
   const [searchedMovies, setSearchedMovies] = React.useState(null);
   const [shortMovie, setShortMovie] = React.useState(false);
   const [visibleMoviesNumber, setVisibleMoviesNumber] = React.useState(12);
@@ -26,7 +26,7 @@ export default function Movies() {
 
   React.useEffect(() => {
     searchMovie();
-  }, [movies]);
+  }, [movies, savedMovies]);
 
   useEffect(() => {
     if (width < 1280) {
@@ -44,26 +44,24 @@ export default function Movies() {
 
   React.useEffect(() => {
     if (search !== '') {
-      if (movies == null) {
-        mainApi.getSavedMovieList()
-          .then((movieList) => {
-            setSavedMovies(movieList);
-          })
-          .catch((err) => {
-            console.log(err);
-          })
-      } else {
+
         searchMovie();
-      }
     }
   }, [search, shortMovie]);
 
   function searchMovie() {
-    if (movies === null) {
+    if (movies === null || savedMovies === null) {
       moviesApi.getMovieList()
         .then((movieList) => {
           if (movieList.length > 0) {
             setMovies(movieList);
+            mainApi.getSavedMovieList()
+              .then((myMovieList) => {
+                setSavedMovies(myMovieList);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           }
         })
         .catch(err => {
