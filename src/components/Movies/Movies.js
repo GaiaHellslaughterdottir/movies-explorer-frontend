@@ -10,7 +10,7 @@ export default function Movies() {
   const [search, setSearch] = React.useState('');
   const [inSearch, setInSearch] = React.useState(false);
   const [searchError, setSearchError] = React.useState(null);
-  const [movies, setMovies] = React.useState([]);
+  const [movies, setMovies] = React.useState(null);
   const [savedMovies, setSavedMovies] = React.useState([]);
   const [searchedMovies, setSearchedMovies] = React.useState(null);
   const [shortMovie, setShortMovie] = React.useState(false);
@@ -19,17 +19,14 @@ export default function Movies() {
   const { width } = useWindowSize();
 
   React.useEffect(() => {
-    mainApi.getSavedMovieList()
-      .then((movieList) => {
-        setSavedMovies(movieList);
-        setShortMovie(localStorage.getItem('shortMovie') === 'true');
-        const searchText = localStorage.getItem('searchText');
-        setSearch(searchText !== null ? searchText : '');
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+    setShortMovie(localStorage.getItem('shortMovie') === 'true');
+    const searchText = localStorage.getItem('searchText');
+    setSearch(searchText !== null ? searchText : '');
   }, []);
+
+  React.useEffect(() => {
+    searchMovie();
+  }, [movies]);
 
   useEffect(() => {
     if (width < 1280) {
@@ -47,21 +44,26 @@ export default function Movies() {
 
   React.useEffect(() => {
     if (search !== '') {
-      searchMovie();
+      if (movies == null) {
+        mainApi.getSavedMovieList()
+          .then((movieList) => {
+            setSavedMovies(movieList);
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      } else {
+        searchMovie();
+      }
     }
   }, [search, shortMovie]);
 
   function searchMovie() {
-    setSearchedMovies(null);
-    setVisibleMoviesNumber(0);
-    setInSearch(true);
-    setSearchError(null);
-    if (movies.length === 0) {
+    if (movies === null) {
       moviesApi.getMovieList()
         .then((movieList) => {
           if (movieList.length > 0) {
             setMovies(movieList);
-            searchByName(movieList);
           }
         })
         .catch(err => {
@@ -71,12 +73,36 @@ export default function Movies() {
             'Подождите немного и попробуйте ещё раз');
         });
     } else {
+      setSearchedMovies(null);
+      setVisibleMoviesNumber(0);
+      setInSearch(true);
+      setSearchError(null);
       searchByName(movies);
     }
   }
 
-  function handleChangeMovie() {
-    setSearchedMovies([...searchedMovies]);
+  function handleAddMovieToSaved({ _id, movieId }) {
+    const movie = searchedMovies.find((c) => c.movieId === movieId);
+    if (_id !== undefined) {
+      mainApi.deleteSavedMovie(_id)
+        .then(() => {
+          delete movie._id;
+          setSearchedMovies([...searchedMovies]);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    } else {
+      mainApi.postSavedMovie(movie)
+        .then((postedMovie) => {
+          movie._id = postedMovie._id;
+          setSearchedMovies([...searchedMovies]);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+      ;
+    }
   }
 
   function handlerShortMovieChange(state) {
@@ -124,8 +150,8 @@ export default function Movies() {
       <hr className="page__line"/>
       <MoviesCardList movies={ searchedMovies }
                       searchError={ searchError }
-                      onChangeMovie={ handleChangeMovie }
-                      savedPage={false}
+                      onChangeMovie={ handleAddMovieToSaved }
+                      savedPage={ false }
                       visibleMoviesNumber={ visibleMoviesNumber }
                       message={ !searchedMovies || searchedMovies.length === 0 ? 'Ничего не найдено' : null }/>
       <Preloader className={ inSearch ? 'preloader_visible' : '' }/>

@@ -5,6 +5,11 @@ import Form from "../Form/Form";
 import FormField from "../Form/FormField/FormField";
 
 export default function Profile(props) {
+  const [lastName, setLastName] = React.useState(null);
+  const [lastEmail, setLastEmail] = React.useState(null);
+  const [currentName, setCurrentName] = React.useState(null);
+  const [currentEmail, setCurrentEmail] = React.useState(null);
+  const [noChanges, setNoChanges] = React.useState(false);
   const { register, handleSubmit, setValue, formState: { errors } } = useForm({ mode: 'all' });
 
   function onSubmit(data) {
@@ -15,11 +20,35 @@ export default function Profile(props) {
   }
 
   React.useEffect(() => {
+    if(props.edited === true) {
+      setLastName(props.userInfo.name);
+      setLastEmail(props.userInfo.email);
+      setNoChanges(true);
+    } else {
+      setLastName(null);
+      setLastEmail(null);
+      setNoChanges(false);
+    }
+  }, [props.edited]);
+
+  React.useEffect(() => {
+    setNoChanges(lastName === currentName && lastEmail === currentEmail);
+  }, [currentName, currentEmail]);
+
+  React.useEffect(() => {
     if (props.userInfo.name !== undefined && props.userInfo.email !== undefined) {
       setValue('name', props.userInfo.name);
       setValue('email', props.userInfo.email);
     }
   }, [props.userInfo]);
+
+  function onChangeNameValue(e) {
+    setCurrentName(e.target.value);
+  }
+
+  function onChangeEmailValue(e) {
+    setCurrentEmail(e.target.value);
+  }
 
   return (
 
@@ -30,7 +59,7 @@ export default function Profile(props) {
                         errorText={ props.errorText }
                         formTitle={`Привет, ${props.userInfo.name}`}
                         buttonTitle="Сохранить"
-                        submitButtonDisabled={Object.keys(errors).length !== 0}
+                        submitButtonDisabled={noChanges || props.inRequest || Object.keys(errors).length !== 0}
                         name="login">
         <FormField fieldTitle="Имя" errorTitle={errors.name !== undefined ? 'Имя задано не корректно' : null}>
           <input
@@ -38,7 +67,7 @@ export default function Profile(props) {
             type="text"
             className="form__field"
             id="form__field-name"
-            { ...register('name', { required: true, maxLength: 30, minLength: 2 }) }
+            { ...register('name', { required: true, maxLength: 30, minLength: 2, onChange: onChangeNameValue }) }
           />
         </FormField>
         <FormField fieldTitle="E-mail" errorTitle={errors.email !== undefined ? 'Емэйл задан не корректно' : null}>
@@ -48,7 +77,7 @@ export default function Profile(props) {
             className="form__field"
             id="form__field-email"
             { ...register('email', {
-              required: true, maxLength: 30, minLength: 2,
+              required: true, maxLength: 30, minLength: 2, onChange: onChangeEmailValue,
               pattern: {
                 value: /\S+@\S+\.\S+/,
               }

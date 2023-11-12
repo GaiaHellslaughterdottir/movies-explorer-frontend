@@ -28,11 +28,6 @@ export default function SavedMovies() {
     searchByName(savedMovies);
   }
 
-  function handleChangeMovie(movie) {
-    setSearchedMovies((state) => state.filter((c) => c._id !== movie._id));
-    setSavedMovies((state) => state.filter((c) => c.movieId !== movie.movieId));
-  }
-
   function handlerShortMovieChange(state) {
     setShortMovie(state);
   }
@@ -51,15 +46,28 @@ export default function SavedMovies() {
     }));
   }
 
+  function handleDeleteMovie({_id, movieId}) {
+    if (_id !== undefined) {
+      mainApi.deleteSavedMovie(_id)
+        .then(() => {
+          setSearchedMovies((state) => state.filter((c) => c._id !== _id));
+          setSavedMovies((state) => state.filter((c) => c.movieId !== movieId));
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }
+  }
+
   return (
     <section className="saved-movies">
       <SearchForm shortMovie={ shortMovie } onSearch={ handlerSearchChange } search={ search }
                   onChangeShortMovie={ handlerShortMovieChange }/>
       <hr className="page__line"/>
       <MoviesCardList movies={ searchedMovies }
-                      onChangeMovie={ handleChangeMovie }
-                      savedPage={true}
-                      message={!searchedMovies || searchedMovies.length === 0 ? 'У вас еще нет избранных фильмов' : null}/>
+                      onChangeMovie={ handleDeleteMovie }
+                      savedPage={ true }
+                      message={ !searchedMovies || searchedMovies.length === 0 ? 'У вас еще нет избранных фильмов' : null }/>
     </section>
   );
 }

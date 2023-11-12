@@ -26,7 +26,7 @@ export default function Register(props) {
       <Form formTitle="Добро пожаловать!"
             onSubmit={ handleSubmit(onSubmit) }
             buttonTitle="Зарегистрироваться"
-            submitButtonDisabled={Object.keys(errors).length !== 0}
+            submitButtonDisabled={props.inRequest || Object.keys(errors).length !== 0}
             name="register"
             errorText={ props.errorText }
             footerElement={ <p className="form__login-footer">

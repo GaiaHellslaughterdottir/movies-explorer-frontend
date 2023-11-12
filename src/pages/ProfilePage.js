@@ -11,6 +11,7 @@ export default function ProfilePage(props) {
                userInfo={props.userInfo}
                onActivateEditProfile={props.onActivateEditProfile}
                edited = {props.edited}
+               inRequest={ props.inRequest }
                onEditProfile={props.onEditProfile}
                errorText={ props.errorText }/>
     </div>

@@ -26,7 +26,7 @@ export default function Login(props) {
             onSubmit={ handleSubmit(onSubmit) }
             formTitle="Рады видеть!"
             buttonTitle="Войти"
-            submitButtonDisabled={Object.keys(errors).length !== 0}
+            submitButtonDisabled={props.inRequest || Object.keys(errors).length !== 0}
             name="login"
             errorText={ props.errorText }
             footerElement={ <p className="form__login-footer">
