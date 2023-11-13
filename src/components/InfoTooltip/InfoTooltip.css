@@ -1,0 +1,39 @@
+.tooltip {
+  min-width: 430px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tooltip__title {
+  width: 358px;
+  font-size: 24px;
+  font-weight: 900;
+  margin: 32px auto 60px auto;
+  text-align: center;
+}
+
+.tooltip__image {
+  width: 120px;
+  height: 120px;
+  margin: 60px auto 0 auto;
+}
+
+@media screen and (max-width: 767px) {
+  .tooltip {
+    min-width: 230px;
+  }
+
+  .tooltip__image {
+    width: 60px;
+    height: 60px;
+    margin: 35px auto 0 auto;
+  }
+
+  .tooltip__title {
+    width: 250px;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 30px auto 30px auto;
+  }
+}
+

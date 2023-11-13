@@ -22,10 +22,84 @@
 @import "components/Movies/SearchForm/SearchForm.css";
 @import "components/Movies/FilterCheckbox/FilterCheckbox.css";
 @import "components/Movies/MoviesCardList/MoviesCardList.css";
-@import "components/Movies/Preloader/Preloader.css";
 @import "components/Navigation/Navigation.css";
+@import "components/Movies/Preloder/Preloader.css";
+@import "components/Popup/Popup.css";
+@import "components/InfoTooltip/InfoTooltip.css";
 
 body {
   background-color: #202020;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+.form_movies-search .form__fields-wrapper .form__field-wrapper .form__field:-webkit-autofill {
+  border: none;
+  border-radius: 10px;
+  padding-left: 10px;
+  -webkit-text-fill-color: #8B8B8B;
+  -webkit-box-shadow: 0 0 0 1000px #313131 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+.form__fields-wrapper .form__field-wrapper .form__field:-webkit-autofill {
+  border: none;
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: none;
+  padding: 0;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+.register .form__fields-wrapper .form__field-wrapper .form__field:-webkit-autofill {
+  border: none;
+  border-bottom: 1px solid rgba(66, 66, 66, 1);
+  border-radius: 0;
+  padding: 0 0 10px 0;
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: none;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+.form_login .form__fields-wrapper .form__field-wrapper .form__field:-webkit-autofill {
+  border: none;
+  border-bottom: 1px solid rgba(66, 66, 66, 1);
+  border-radius: 0;
+  padding: 0 0 10px 0;
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: none;
+  transition: background-color 5000s ease-in-out 0s;
+}

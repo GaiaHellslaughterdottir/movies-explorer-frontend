@@ -1,3 +1,42 @@
 .movies {
   max-width: 100%;
 }
+
+.show-more {
+  width: calc(100% - 140px);
+  margin: 60px 70px auto 70px;
+  display: block;
+  cursor: pointer;
+  border: 0;
+  height: 36px;
+  border-radius: 6px;
+  background-color: #2F2F2F;
+  color: #FFF;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  -webkit-transition: background-color .5s ease-out;
+  -moz-transition: background-color .5s ease-out;
+  -o-transition: background-color .5s ease-out;
+  transition: background-color .5s ease-out;
+}
+
+.show-more:hover {
+  background-color: #4285F4;
+}
+
+@media screen and (max-width: 1279px) {
+  .show-more {
+    margin: 50px 30px 80px 30px;
+    width: calc(100% - 60px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .show-more {
+    margin: 50px 10px 80px 10px;
+    width: calc(100% - 20px);
+  }
+}

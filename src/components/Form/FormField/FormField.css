@@ -1,5 +1,5 @@
 .form__field-wrapper {
-  padding: 0 0 10px 0;
+  padding: 0 0 24px 0;
 }
 
 .form__field-title {
@@ -86,6 +86,52 @@
   padding: 0 0 10px 0;
 }
 
+.form__field-error {
+  color: #EE3465;
+  font-size: 10px;
+  display: block;
+  box-sizing: border-box;
+  height: 25px;
+  margin-top: 6px;
+  position: absolute;
+}
+
+/**
+ Форма поиска фильмов
+ */
+.form_movies-search .form__fields-wrapper .form__field-wrapper .form__field:focus {
+  height: 40px;
+  background-color: rgba(49, 49, 49, 1);
+}
+
+.form_movies-search .form__fields-wrapper .form__field-wrapper .form__field:-webkit-autofill {
+  height: 40px;
+  background-color: rgba(49, 49, 49, 1);
+}
+
+/**
+ Форма редактирования профиля
+ */
+.form_edit-profile .form__fields-wrapper .form__field-wrapper .form__field:-webkit-autofill {
+  height: auto;
+  border-radius: 6px;
+  padding-right: 6px;
+  background-color: #202020;
+}
+
+.form_edit-profile .form__fields-wrapper .form__field-wrapper .form__field-error {
+  font-size: 8px;
+}
+
+
+/**
+ Форма регистрации
+ */
+.register .form__fields-wrapper .form__field-wrapper .form__field:-webkit-autofill {
+  border-bottom: 1px solid rgba(66, 66, 66, 1);
+  padding: 0 0 10px 0;
+}
+
 .form__field::placeholder {
   color: #8B8B8B;
 }
@@ -96,16 +142,6 @@
 
 .form_edit-profile .form__field:focus {
   border-bottom: none;
-}
-
-.form__field-error {
-  width: 100%;
-  color: #EE3465;
-  font-size: 10px;
-  display: block;
-  box-sizing: border-box;
-  height: 25px;
-  margin-top: 6px;
 }
 
 .form__field-short-checkbox {

@@ -41,6 +41,10 @@
   background-color: #2D6EDB;
 }
 
+.submit-button:disabled {
+  background-color: #2F2F2F;
+}
+
 @media screen and (max-width: 767px) {
   .search-form .submit-button {
     width: 80px;
