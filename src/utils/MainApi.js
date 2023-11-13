@@ -79,6 +79,6 @@ class MainApi {
 }
 
 export const mainApi = new MainApi({
-  baseUrl: 'https://backend.564148.msk-kvm.ru',
+  baseUrl: 'http://localhost:3000',
   headers: { 'Content-Type': 'application/json' }
 });

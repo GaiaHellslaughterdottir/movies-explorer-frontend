@@ -7,7 +7,7 @@ import FormField from "../Form/FormField/FormField";
 import { Link, NavLink } from "react-router-dom";
 
 export default function Register(props) {
-  const { register, handleSubmit, formState: { errors } } = useForm({ mode: 'all' });
+  const { register, handleSubmit, trigger, formState: { errors } } = useForm({ mode: 'all' });
 
   function onSubmit(data) {
     props.onRegister({
@@ -16,6 +16,10 @@ export default function Register(props) {
       password: data.password
     });
   }
+
+  React.useEffect(() => {
+    trigger(['name', 'email', 'password']);
+  }, []);
 
   return (
     <div className="register">

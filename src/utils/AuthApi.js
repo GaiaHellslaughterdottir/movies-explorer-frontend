@@ -60,5 +60,5 @@ export default class AuthApi {
 }
 
 export const auth = new AuthApi({
-  baseUrl: 'https://backend.564148.msk-kvm.ru',
+  baseUrl: 'http://localhost:3000',
 });

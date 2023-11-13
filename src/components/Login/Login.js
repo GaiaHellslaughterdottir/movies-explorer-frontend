@@ -8,7 +8,7 @@ import { Link, NavLink } from "react-router-dom";
 
 
 export default function Login(props) {
-  const { register, handleSubmit, formState: { errors } } = useForm({ mode: 'all' });
+  const { register, handleSubmit, trigger, formState: { errors } } = useForm({ mode: 'all' });
 
   function onSubmit(data) {
     props.onLogin({
@@ -16,6 +16,10 @@ export default function Login(props) {
       password: data.password,
     });
   }
+
+  React.useEffect(() => {
+    trigger(['name', 'email', 'password']);
+  }, []);
 
   return (
     <div className="login">

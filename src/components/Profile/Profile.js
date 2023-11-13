@@ -23,10 +23,14 @@ export default function Profile(props) {
     if(props.edited === true) {
       setLastName(props.userInfo.name);
       setLastEmail(props.userInfo.email);
+      setCurrentName(props.userInfo.name);
+      setCurrentEmail(props.userInfo.email);
       setNoChanges(true);
     } else {
       setLastName(null);
       setLastEmail(null);
+      setCurrentName(null);
+      setCurrentEmail(null);
       setNoChanges(false);
     }
   }, [props.edited]);
